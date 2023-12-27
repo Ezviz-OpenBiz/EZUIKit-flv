@@ -1,0 +1,20 @@
+{
+  "name": "ezuikit-flv",
+  "version": "1.0.0",
+  "main": "./index.js",
+  "types": "./types",
+  "files": [
+    "CHANGELOG.md",
+    "decoder.js",
+    "decoder.wasm",
+    "index.js",
+    "package.json",
+    "README.md",
+    "types"
+  ],
+  "bugs": {
+    "url": "https://github.com/Ezviz-OpenBiz/EZUIKit-flv/issues"
+  },
+  "repository": "git@github.com:Ezviz-OpenBiz/EZUIKit-flv.git",
+  "homepage": "https://ezviz-openbiz.github.io/EZUIKit-flv/"
+}

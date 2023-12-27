@@ -1,0 +1,14 @@
+{
+  "name": "base-app",
+  "version": "1.0.0",
+  "main": "",
+  "scripts": {
+    "dev": "http-server -p 8080 ."
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "ezuikit-flv": "^1.0.0"
+  }
+}
