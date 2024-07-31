@@ -31,7 +31,7 @@
     <input type="text" id="nav-search" placeholder="Search" />
     
     
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EzuikitFlv.html">EzuikitFlv</a><ul class='methods'><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#cancelFullScreen">cancelFullScreen</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#closeSound">closeSound</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#destroy">destroy</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#fullScreen">fullScreen</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#getState">getState</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#getVersion">getVersion</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#getVolume">getVolume</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#openSound">openSound</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#pause">pause</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#play">play</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setDebug">setDebug</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setKeepScreenOn">setKeepScreenOn</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setRotate">setRotate</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setVolume">setVolume</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#FlvOptions">FlvOptions</a></li><li><a href="global.html#PlayerState">PlayerState</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EzuikitFlv.html">EzuikitFlv</a><ul class='methods'><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#audioResume">audioResume</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#cancelFullScreen">cancelFullScreen</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#closeSound">closeSound</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#destroy">destroy</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#exitFullscreen">exitFullscreen</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#fullScreen">fullScreen</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#fullscreen">fullscreen</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#getOptions">getOptions</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#getState">getState</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#getVersion">getVersion</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#getVolume">getVolume</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#openSound">openSound</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#pause">pause</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#play">play</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#resize">resize</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setDebug">setDebug</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setKeepScreenOn">setKeepScreenOn</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setLogger">setLogger</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setRotate">setRotate</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setVolume">setVolume</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#.supportType">supportType</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#FlvOptions">FlvOptions</a></li><li><a href="global.html#PlayerState">PlayerState</a></li></ul>
     
 </nav>
 
@@ -87,7 +87,7 @@
 
 const player = new EzuikitFlv({
     url: &quot;play url&quot;, // https://play.com/9999.flv
-    container: &quot;container-id&quot;, // support element id or element
+    id: &quot;id&quot;, // support element id
     decoder: &quot;decoder.js&quot;, // 自定义解码库加载地址， 默认放置在服务器根目录下
 })
 
@@ -101,7 +101,7 @@ player.play()
 &lt;script>
 const player = new EzuikitFlv({
     url: &quot;play url&quot;, // https://play.com/9999.flv
-    container: &quot;container-id&quot;, // support element id or element
+    id: &quot;container-id&quot;, // support element id or element
     decoder: &quot;decoder.js&quot;, // 自定义解码库加载地址， 默认放置在服务器根目录下
 })
 
@@ -134,7 +134,7 @@ player.play()
 
 <footer>
     
-        <p style='text-align: center;'> @copyright  <a href='https://open.ys7.com/' target='_black'>萤石</a>  Thu Sep 07 2023 18:56:33 GMT+0800 (中国标准时间)</p>
+        <p style='text-align: center;'> @copyright  <a href='https://open.ys7.com/' target='_black'>萤石</a>  Wed Jul 31 2024 21:26:55 GMT+0800 (中国标准时间)</p>
     
 </footer>
 

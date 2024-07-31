@@ -27,8 +27,10 @@ export namespace DEFAULT_PLAYER_OPTIONS {
     export let keepScreenOn: boolean;
     export let isNotMute: boolean;
     export let hasAudio: boolean;
+    export let volume: number;
     export let hasVideo: boolean;
     export let decoder: string;
+    export let staticPath: string;
     export let url: string;
     export let rotate: number;
     export let forceNoOffscreen: boolean;
@@ -42,6 +44,9 @@ export namespace DEFAULT_PLAYER_OPTIONS {
     export let openWebglAlignment: boolean;
     export let wasmDecodeAudioSyncVideo: boolean;
     export let useWebFullScreen: boolean;
+    export namespace loggerOptions {
+        let level: string;
+    }
 }
 export namespace WORKER_CMD_TYPE {
     let init: string;

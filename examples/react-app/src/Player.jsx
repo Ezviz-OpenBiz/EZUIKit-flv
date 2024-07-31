@@ -1,6 +1,6 @@
-import './Player.css';
-import { useCallback, useEffect, useRef } from 'react';
-import EzuikitFlv from 'ezuikit-flv';
+import "./Player.css";
+import { useCallback, useEffect, useRef } from "react";
+import EzuikitFlv from "ezuikit-flv";
 
 function Player() {
   const playerRef = useRef();
@@ -9,24 +9,24 @@ function Player() {
   const volumeRef = useRef();
 
   useEffect(() => {
-    createPlayer();
-    volumeRef.current.addEventListener('blur', (e) => {
+    // createPlayer();
+    volumeRef.current.addEventListener("blur", (e) => {
       if (playerRef.current) {
-        let value = (e.target.value || '').trim();
-        if (value === '') {
-          console.error('音量为空');
+        let value = (e.target.value || "").trim();
+        if (value === "") {
+          console.error("音量为空");
           return;
         }
         value = Number(value);
         if (value > 1 || value < 0) {
-          console.error('音量设置错误， 取值范围在[0,1]');
+          console.error("音量设置错误， 取值范围在[0,1]");
           return;
         }
 
-        value = parseInt((value * 100 + '').split('.')[0]) / 100; // 不使用 toFixed 是为了避免四舍五入问题
+        value = parseInt((value * 100 + "").split(".")[0]) / 100; // 不使用 toFixed 是为了避免四舍五入问题
         playerRef.current.setVolume(value);
       } else {
-        console.log('player 未初始化');
+        console.log("player 未初始化");
       }
     });
   }, []);
@@ -39,19 +39,26 @@ function Player() {
         debug: true,
         url,
         useMSE: true,
-        decoder: 'decoder.js' // 软解解码资源 （wasm 要和js 在同一个文件夹中）
+        decoder: "decoder.js" // 软解解码资源 （wasm 要和js 在同一个文件夹中）
       });
       playerRef.current.play();
     }
   };
 
-  const handlePlay = useCallback(() => {
+  const handleInIt = useCallback(() => {
     if (playerRef.current) {
       playerRef.current.destroy();
       playerRef.current = null;
-      createPlayer();
+    }
+    createPlayer();
+  }, []);
+
+  const handlePlay = useCallback(() => {
+    if (playerRef.current) {
+      playerRef.current.play();
     }
   }, []);
+
   const handlePause = useCallback(() => {
     if (playerRef.current) {
       playerRef.current.pause();
@@ -61,6 +68,7 @@ function Player() {
   const handleDestroy = useCallback(() => {
     if (playerRef.current) {
       playerRef.current.destroy();
+      playerRef.current = null;
     }
   }, []);
 
@@ -99,9 +107,15 @@ function Player() {
       <div id="player-container" ref={containerRef}></div>
       <div>
         <div>
-          <input style={{ width: 600 }} placeholder="输入播放地址" ref={urlRef} defaultValue="" />
+          <input
+            style={{ width: 600 }}
+            placeholder="输入播放地址"
+            ref={urlRef}
+            defaultValue=""
+          />
         </div>
         <div>
+          <button onClick={handleInIt}>init</button>
           <button onClick={handlePlay}>播放</button>
           <button onClick={handlePause}>暂停</button>
           <button onClick={handleOpenSound}>打开声音</button>

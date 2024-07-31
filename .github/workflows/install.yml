@@ -1,0 +1,32 @@
+# 整个流程的名字
+name: install dependencies
+# 触发时机，在 tag 被 push 操作触发
+on:
+  push:
+    branches: ["master", "develop"]
+  pull_request:
+    branches: ["master"]
+
+# 任务，定义个changelog 的任务
+jobs:
+  changelog:
+    name: install dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # 设置 Node
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+          registry-url: https://registry.npmjs.org
+      # 安装依赖
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install
+

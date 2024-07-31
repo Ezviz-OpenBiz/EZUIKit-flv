@@ -6,12 +6,12 @@
     <title>Title</title>
     <script src="./index.js"></script>
     <style>
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         .root {
             display: flex;
             place-content: center;
@@ -39,7 +39,6 @@
             padding-left: 5px;
             padding-right: 5px;
         }
- 
     </style>
 </head>
 
@@ -49,10 +48,10 @@
             <div id="container"></div>
             <div class="input">
                 <input autocomplete="on" id="playUrl" value="" />
-                <button id="play">播放</button>
-                
+                <button id="init">初始化</button>
             </div>
             <div style="display: inline-flex;">
+                <button id="play">播放</button>
                 <button id="pause">停止</button>
                 <button id="destroy">销毁</button>
                 <select id="setDebug">
@@ -66,17 +65,17 @@
                 <div>
                     <label>旋转</label>
                     <select id="setRotate" title="只支持 0 | 90 | 180 | 270">
-                      <option value="0">0度</option>
-                      <option value="90">90度</option>
-                      <option value="180">180度</option>
-                      <option value="270">270度</option>
+                        <option value="0">0度</option>
+                        <option value="90">90度</option>
+                        <option value="180">180度</option>
+                        <option value="270">270度</option>
                     </select>
                 </div>
                 <div>
                     <label>填充模式</label>
                     <select id="setScaleMode" title="填充模式">
                         <option value="0">完全填充区域（拉伸）</option>
-                        <option value="1" selected >等比缩放,最大边填充</option>
+                        <option value="1" selected>等比缩放,最大边填充</option>
                         <option value="2">等比缩放,最小边填充</option>
                     </select>
                 </div>
@@ -86,7 +85,8 @@
     </div>
 
     <script>
-        var $player = document.getElementById('play');
+        var $init = document.getElementById('init');
+        var $play = document.getElementById('play');
         var $pause = document.getElementById('pause');
         var $playHref = document.getElementById('playUrl');
         var $container = document.getElementById('container');
@@ -107,23 +107,28 @@
                 debug: true
             });
 
-            player.on("error", (msg) => {console.error(msg)})
+            player.on("error", (msg) => { console.error(msg) })
         }
 
-        $player.addEventListener('click', function () {
+        $init.addEventListener('click', function () {
             var href = $playHref.value;
 
             if (player) {
                 player.destroy()
                 player = null
             }
-            
+
             if (href) {
                 create()
                 player.play();
             }
         }, false)
 
+        $play.addEventListener('click', function () {
+            if (player) {
+                player.play();
+            }
+        }, false)
 
         $pause.addEventListener('click', function () {
             if (player) player.pause();

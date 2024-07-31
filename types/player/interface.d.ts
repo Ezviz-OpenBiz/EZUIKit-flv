@@ -18,6 +18,8 @@ export type TFlvOptions = {
     autoWasm: boolean;
     wasmDecodeErrorReplay: boolean;
     useWebFullScreen: boolean;
+    width: number;
+    height: number;
 };
 export type RequiredFlvOptions = Required<TFlvOptions> & {
     url: string;
