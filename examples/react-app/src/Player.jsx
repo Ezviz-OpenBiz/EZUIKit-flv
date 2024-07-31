@@ -99,7 +99,12 @@ function Player() {
       <div id="player-container" ref={containerRef}></div>
       <div>
         <div>
-          <input style={{ width: 600 }} placeholder="输入播放地址" ref={urlRef} defaultValue="" />
+          <input
+            style={{ width: 600 }}
+            placeholder="输入播放地址"
+            ref={urlRef}
+            defaultValue="https://test12flow.ys7.com:443/v3/openlive/C91672728_1_2.flv?expire=1724231462&id=615956453163966465&t=3edca10be26e834f298923d4114bf9467d9778a7e0d1fa02342846031545b909&ev=100"
+          />
         </div>
         <div>
           <button onClick={handlePlay}>播放</button>

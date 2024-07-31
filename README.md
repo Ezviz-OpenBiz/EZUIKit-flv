@@ -2,7 +2,6 @@
 
 ![Download](https://img.shields.io/npm/dm/ezuikit-flv.svg)
 ![Version](https://img.shields.io/npm/v/ezuikit-flv.svg)
-![Build Demos](https://github.com/Ezviz-OpenBiz/EZUIKit-flv/workflows/build-demos/badge.svg)
 
 ezuikit-flv 是一款开源的纯H5直播流播放器，通过Emscripten将音视频解码库编译成js（wasm) 运行于浏览器之中。兼容几乎所有浏览器，可以运行在PC、手机、微信中，无需额外安装插件。
 
@@ -31,14 +30,14 @@ import EzuikitFlv from 'ezuikit-flv'
 
 const player = new EzuikitFlv({
     url: "play url", // https://play.com/9999.flv
-    container: "container-id", // support element id or element
+    id: "id", // support element id
     decoder: "decoder.js", // 自定义解码库加载地址， 默认放置在服务器根目录下
 })
 
 player.play()
 ```
 
-### umd使用 
+### umd使用
 
 ```html
 <div id='container-id'>
@@ -48,7 +47,7 @@ player.play()
 <script>
 const player = new EzuikitFlv({
     url: "play url", // https://play.com/9999.flv
-    container: "container-id", // support element id or element
+    id: "container-id", // support element id or element
     decoder: "decoder.js", // 自定义解码库加载地址， 默认放置在服务器根目录下
 })
 

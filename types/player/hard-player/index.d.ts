@@ -1,23 +1,22 @@
-import { PlayerInterface } from '../interface';
+import { RequiredFlvOptions } from '../interface';
 import Events from '../../utils/events';
 import Video from './videoLoader';
 import Control from '../../control';
-import { RequiredFlvOptions } from '../interface';
 import BasePlayer from '../base-player';
 /**
  * @class
  *
  * @interface {PlayerInterface}
  */
-export default class HardPlayer extends BasePlayer implements PlayerInterface {
+export default class HardPlayer extends BasePlayer {
     player: any;
     video: Video;
     events: Events;
-    _playing: any;
-    _lastVolume: any;
+    _playing: boolean;
+    _lastVolume: number;
     _loading: any;
-    _audioTimestamp: any;
-    _videoTimestamp: any;
+    _audioTimestamp: number;
+    _videoTimestamp: number;
     _times: any;
     $container: HTMLElement;
     _opt: RequiredFlvOptions;
@@ -47,17 +46,17 @@ export default class HardPlayer extends BasePlayer implements PlayerInterface {
     get webFullscreen(): boolean;
     set loaded(value: boolean);
     get loaded(): boolean;
-    set playing(value: any);
-    get playing(): any;
+    set playing(value: boolean);
+    get playing(): boolean;
     get volume(): number;
     set volume(value: number);
-    get lastVolume(): any;
+    get lastVolume(): number;
     set loading(value: any);
     get loading(): any;
-    set audioTimestamp(value: any);
-    get audioTimestamp(): any;
-    set videoTimestamp(value: any);
-    get videoTimestamp(): any;
+    set audioTimestamp(value: number);
+    get audioTimestamp(): number;
+    set videoTimestamp(value: number);
+    get videoTimestamp(): number;
     get isDebug(): boolean;
     /**
      * 心跳检查

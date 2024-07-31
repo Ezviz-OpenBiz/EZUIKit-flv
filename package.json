@@ -1,8 +1,9 @@
 {
   "name": "ezuikit-flv",
-  "version": "1.0.0",
+  "version": "1.0.2-beta.6",
   "main": "./index.js",
   "types": "./types",
+  "author": "Ezviz-OpenBiz",
   "files": [
     "CHANGELOG.md",
     "decoder.js",
@@ -12,9 +13,21 @@
     "README.md",
     "types"
   ],
+  "dependencies": {
+    "@ezuikit/player-base": "0.1.0-alpha.1",
+    "@ezuikit/utils-collect": "0.1.0-beta.1",
+    "@ezuikit/utils-logger": "1.0.1",
+    "browser-tool": "^1.0.5",
+    "eventemitter3": "^5.0.1",
+    "recordrtc": "5.6.2",
+    "screenfull": "5.1.0"
+  },
   "bugs": {
     "url": "https://github.com/Ezviz-OpenBiz/EZUIKit-flv/issues"
   },
-  "repository": "git@github.com:Ezviz-OpenBiz/EZUIKit-flv.git",
-  "homepage": "https://ezviz-openbiz.github.io/EZUIKit-flv/"
+  "homepage": "https://github.com/Ezviz-OpenBiz/EZUIKit-flv",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }

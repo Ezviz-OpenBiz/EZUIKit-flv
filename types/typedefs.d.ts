@@ -4,9 +4,13 @@
  * @typedef FlvOptions
  *
  * @property {string | HTMLElement} container 渲染容器
+ * @property {string } id 渲染容器id 优先级比 container 高
  * @property {number=} videoBuffer 设置最大缓冲时长，单位秒，播放器会自动消除延迟。
  * @property {string=} decoder 解码库worker地址 默认 `decoder.js`, wasm 文件要和decoder在同一个文件夹中
+ * @property {string=} staticPath 静态资源的了路径
+ * @property {boolean=} autoPlay 自动播放 默认false
  * @property {boolean=} hasAudio 是否有音频，如果设置false，则不对音频数据解码，提升性能。
+ * @property {number=} volume 音量大小, 默认 0.5。
  * @property {(0 | 1 | 2)=} scaleMode 设置渲染模式， 默认 1, 取值 0 | 1 | 2。
  * @property {boolean=} debug 是否开启控制台调试打印。默认 false
  * @property {number=} timeout 设置超时时长, 单位秒, 在连接成功之前(loading)和播放中途(heart),如果超过设定时长无数据返回,则回调timeout事件。默认 10
@@ -40,6 +44,10 @@ export type FlvOptions = {
      */
     container: string | HTMLElement;
     /**
+     * 渲染容器id 优先级比 container 高
+     */
+    id: string;
+    /**
      * 设置最大缓冲时长，单位秒，播放器会自动消除延迟。
      */
     videoBuffer?: number | undefined;
@@ -48,9 +56,21 @@ export type FlvOptions = {
      */
     decoder?: string | undefined;
     /**
+     * 静态资源的了路径
+     */
+    staticPath?: string | undefined;
+    /**
+     * 自动播放 默认false
+     */
+    autoPlay?: boolean | undefined;
+    /**
      * 是否有音频，如果设置false，则不对音频数据解码，提升性能。
      */
     hasAudio?: boolean | undefined;
+    /**
+     * 音量大小, 默认 0.5。
+     */
+    volume?: number | undefined;
     /**
      * 设置渲染模式， 默认 1, 取值 0 | 1 | 2。
      */

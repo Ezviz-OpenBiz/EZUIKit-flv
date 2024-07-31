@@ -31,7 +31,7 @@
     <input type="text" id="nav-search" placeholder="Search" />
     
     
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EzuikitFlv.html">EzuikitFlv</a><ul class='methods'><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#cancelFullScreen">cancelFullScreen</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#closeSound">closeSound</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#destroy">destroy</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#fullScreen">fullScreen</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#getState">getState</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#getVersion">getVersion</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#getVolume">getVolume</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#openSound">openSound</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#pause">pause</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#play">play</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setDebug">setDebug</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setKeepScreenOn">setKeepScreenOn</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setRotate">setRotate</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setVolume">setVolume</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#FlvOptions">FlvOptions</a></li><li><a href="global.html#PlayerState">PlayerState</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EzuikitFlv.html">EzuikitFlv</a><ul class='methods'><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#audioResume">audioResume</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#cancelFullScreen">cancelFullScreen</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#closeSound">closeSound</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#destroy">destroy</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#exitFullscreen">exitFullscreen</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#fullScreen">fullScreen</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#fullscreen">fullscreen</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#getOptions">getOptions</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#getState">getState</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#getVersion">getVersion</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#getVolume">getVolume</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#openSound">openSound</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#pause">pause</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#play">play</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#resize">resize</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setDebug">setDebug</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setKeepScreenOn">setKeepScreenOn</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setLogger">setLogger</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setRotate">setRotate</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#setVolume">setVolume</a></li><li data-type='method' style='display: none;'><a href="EzuikitFlv.html#.supportType">supportType</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#FlvOptions">FlvOptions</a></li><li><a href="global.html#PlayerState">PlayerState</a></li></ul>
     
 </nav>
 
@@ -239,6 +239,36 @@
 
         <tr>
             
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>渲染容器id 优先级比 container 高</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>videoBuffer</code></td>
             
 
@@ -303,6 +333,70 @@
 
         <tr>
             
+                <td class="name"><code>staticPath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    可选<br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>静态资源的了路径</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>autoPlay</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    可选<br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>自动播放 默认false</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>hasAudio</code></td>
             
 
@@ -329,6 +423,38 @@
             
 
             <td class="description last"><p>是否有音频，如果设置false，则不对音频数据解码，提升性能。</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>volume</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    可选<br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>音量大小, 默认 0.5。</p></td>
         </tr>
 
     
@@ -987,7 +1113,7 @@
 
 <footer>
     
-        <p style='text-align: center;'> @copyright  <a href='https://open.ys7.com/' target='_black'>萤石</a>  Thu Sep 07 2023 18:56:33 GMT+0800 (中国标准时间)</p>
+        <p style='text-align: center;'> @copyright  <a href='https://open.ys7.com/' target='_black'>萤石</a>  Wed Jul 31 2024 14:16:05 GMT+0800 (中国标准时间)</p>
     
 </footer>
 
