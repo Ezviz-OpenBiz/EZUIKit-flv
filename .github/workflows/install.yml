@@ -10,7 +10,7 @@ on:
 # 任务，定义个changelog 的任务
 jobs:
   changelog:
-    name: Release
+    name: install dependencies
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
