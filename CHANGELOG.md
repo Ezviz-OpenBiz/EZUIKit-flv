@@ -2,7 +2,7 @@
 
 ### Feat
 
-- 支持被当成插件
+- 支持被当成插件 (静态方法 supportType)
 
 ### Fixed
 
