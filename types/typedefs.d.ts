@@ -10,7 +10,7 @@
  * @property {string=} staticPath 静态资源的了路径
  * @property {boolean=} autoPlay 自动播放 默认false
  * @property {boolean=} hasAudio 是否有音频，如果设置false，则不对音频数据解码，提升性能。
- * @property {number=} volume 音量大小, 默认 0.5。
+ * @property {number=} volume 音量大小, 默认 0.8。
  * @property {(0 | 1 | 2)=} scaleMode 设置渲染模式， 默认 1 等比缩放,最大边填充, 取值 0 | 1 | 2。
  * @property {boolean=} debug 是否开启控制台调试打印。默认 false
  * @property {number=} heartTimeout 设置心态超时时长, 单位秒。默认 5 ， @2.0.0
@@ -84,7 +84,7 @@ export type FlvOptions = {
      */
     hasAudio?: boolean | undefined;
     /**
-     * 音量大小, 默认 0.5。
+     * 音量大小, 默认 0.8。
      */
     volume?: number | undefined;
     /**
