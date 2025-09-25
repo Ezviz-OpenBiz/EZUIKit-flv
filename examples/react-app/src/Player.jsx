@@ -1,4 +1,5 @@
 import "./Player.css";
+import EzuikitFlv from "ezuikit-flv/style.css";
 import { useCallback, useEffect, useRef } from "react";
 import EzuikitFlv from "ezuikit-flv";
 
@@ -24,7 +25,7 @@ function Player() {
         }
 
         value = parseInt((value * 100 + "").split(".")[0]) / 100; // 不使用 toFixed 是为了避免四舍五入问题
-        playerRef.current.setVolume(value);
+        playerRef.current.volume = value;
       } else {
         console.log("player 未初始化");
       }
@@ -38,10 +39,11 @@ function Player() {
         container: containerRef.current,
         debug: true,
         url,
-        useMSE: true,
-        decoder: "decoder.js" // 软解解码资源 （wasm 要和js 在同一个文件夹中）
+        useMSE: true, // 硬解
+        autoPlay: true, // 默认自动播放
+        // decoder: "decoder.js", // 软解解码资源 （wasm 要和js 在同一个文件夹中）
       });
-      playerRef.current.play();
+      // playerRef.current.play();
     }
   };
 
