@@ -1,177 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Base App</title>
+    <link rel="stylesheet" href="./style.css" />
     <script src="./index.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        .root {
-            display: flex;
-            place-content: center;
-            margin-top: 3rem;
-        }
+      .root {
+        display: flex;
+        place-content: center;
+        margin-top: 3rem;
+      }
 
-        #container {
-            background: #000;
-            width: 640px;
-            height: 398px;
-        }
+      #container {
+        background: #000;
+        width: 640px;
+        height: 398px;
+      }
 
-        .input {
-            display: flex;
-            margin-top: 10px;
-            color: white;
-            place-content: stretch;
-        }
+      .input {
+        display: flex;
+        margin-top: 10px;
+        color: white;
+        place-content: stretch;
+      }
 
-        .input input {
-            flex: auto;
-        }
+      .input input {
+        flex: auto;
+      }
 
-        button {
-            padding-left: 5px;
-            padding-right: 5px;
-        }
+      button {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
     </style>
-</head>
+  </head>
 
-<body class="page">
+  <body class="page">
     <div class="root">
-        <div class="container-shell">
-            <div id="container"></div>
-            <div class="input">
-                <input autocomplete="on" id="playUrl" value="" />
-                <button id="init">初始化</button>
-            </div>
-            <div style="display: inline-flex;">
-                <button id="play">播放</button>
-                <button id="pause">停止</button>
-                <button id="destroy">销毁</button>
-                <select id="setDebug">
-                    <option value>打印日志</option>
-                    <option value="0">不打印日志</option>
-                </select>
-                <div title="只取小数点后两位，不进位">
-                    <label>音量：</label>
-                    <input placeholder="0~1" id="setVolume" type="number" step="0.01" style="width: 60px" />
-                </div>
-                <div>
-                    <label>旋转</label>
-                    <select id="setRotate" title="只支持 0 | 90 | 180 | 270">
-                        <option value="0">0度</option>
-                        <option value="90">90度</option>
-                        <option value="180">180度</option>
-                        <option value="270">270度</option>
-                    </select>
-                </div>
-                <div>
-                    <label>填充模式</label>
-                    <select id="setScaleMode" title="填充模式">
-                        <option value="0">完全填充区域（拉伸）</option>
-                        <option value="1" selected>等比缩放,最大边填充</option>
-                        <option value="2">等比缩放,最小边填充</option>
-                    </select>
-                </div>
-                <button id="getVersion">获取版本</button>
-            </div>
+      <div class="container-shell">
+        <div id="container"></div>
+        <div class="input">
+          <input autocomplete="on" id="playUrl" value="" />
+          <button id="init">初始化</button>
         </div>
+        <div style="display: inline-flex">
+          <button id="play">播放</button>
+          <button id="screenshot">截图</button>
+          <button id="pause">停止</button>
+          <button id="destroy">销毁</button>
+          <select id="setDebug">
+            <option value>打印日志</option>
+            <option value="0">不打印日志</option>
+          </select>
+          <div title="只取小数点后两位，不进位">
+            <label>音量：</label>
+            <input
+              placeholder="0~1"
+              id="setVolume"
+              type="number"
+              step="0.01"
+              style="width: 60px"
+            />
+          </div>
+          <div>
+            <label>旋转</label>
+            <select id="setRotate" title="只支持 0 | 90 | 180 | 270">
+              <option value="0">0度</option>
+              <option value="90">90度</option>
+              <option value="180">180度</option>
+              <option value="270">270度</option>
+            </select>
+          </div>
+          <div>
+            <label>填充模式</label>
+            <select id="setScaleMode" title="填充模式">
+              <option value="0">完全填充区域（拉伸）</option>
+              <option value="1" selected>等比缩放,最大边填充</option>
+              <option value="2">等比缩放,最小边填充</option>
+            </select>
+          </div>
+          <button id="getVersion">获取版本</button>
+        </div>
+      </div>
     </div>
 
     <script>
-        var $init = document.getElementById('init');
-        var $play = document.getElementById('play');
-        var $pause = document.getElementById('pause');
-        var $playHref = document.getElementById('playUrl');
-        var $container = document.getElementById('container');
-        var $destroy = document.getElementById('destroy');
-        var $getVersion = document.getElementById('getVersion');
+      var $init = document.getElementById("init");
+      var $play = document.getElementById("play");
+      var $screenshot = document.getElementById("screenshot");
+      var $pause = document.getElementById("pause");
+      var $playHref = document.getElementById("playUrl");
+      var $container = document.getElementById("container");
+      var $destroy = document.getElementById("destroy");
+      var $getVersion = document.getElementById("getVersion");
 
-        var $setDebug = document.getElementById('setDebug')
-        var $setVolume = document.getElementById('setVolume')
-        var $setRotate = document.getElementById('setRotate')
-        var $setScaleMode = document.getElementById('setScaleMode')
+      var $setDebug = document.getElementById("setDebug");
+      var $setVolume = document.getElementById("setVolume");
+      var $setRotate = document.getElementById("setRotate");
+      var $setScaleMode = document.getElementById("setScaleMode");
 
-        var player = null;
+      var player = null;
 
-        function create() {
-            player = new EzuikitFlv({
-                container: $container,
-                url: $playHref.value,
-                debug: true
-            });
+      function create() {
+        player = new EzuikitFlv({
+          container: $container,
+          url: $playHref.value,
+          debug: true,
+          // autoPlay: false,
+        });
 
-            player.on("error", (msg) => { console.error(msg) })
-        }
+        player.on("error", (msg) => {
+          console.error(msg);
+        });
+      }
 
-        $init.addEventListener('click', function () {
-            var href = $playHref.value;
+      $init.addEventListener(
+        "click",
+        function () {
+          var href = $playHref.value;
 
-            if (player) {
-                player.destroy()
-                player = null
-            }
+          if (player) {
+            player.destroy();
+            player = null;
+          }
 
-            if (href) {
-                create()
-                player.play();
-            }
-        }, false)
-
-        $play.addEventListener('click', function () {
-            if (player) {
-                player.play();
-            }
-        }, false)
-
-        $pause.addEventListener('click', function () {
-            if (player) player.pause();
-        })
-
-        $destroy.addEventListener('click', function () {
-            if (player) {
-                player.destroy();
-                player = null
-            }
+          if (href) {
             create();
-        })
+          }
+        },
+        false
+      );
 
-        $getVersion.addEventListener("click", () => {
-            if (player) {
-                console.log(player.getVersion())
-            }
-        })
+      $play.addEventListener(
+        "click",
+        function () {
+          if (player) {
+            player.play();
+          }
+        },
+        false
+      );
 
-        $setDebug.addEventListener('change', (e) => {
-            if (player) {
-                player.setDebug(e.target.value !== '0')
-            }
-        })
+      $pause.addEventListener("click", function () {
+        if (player) player.pause();
+      });
 
-        $setRotate.addEventListener('change', (e) => {
-            if (player) {
-                player.setRotate(e.target.value)
-            }
-        })
-        $setScaleMode.addEventListener('change', (e) => {
-            if (player) {
-                player.setScaleMode(e.target.value)
-            }
-        })
-        $setVolume.addEventListener('blur', (e) => {
-            if (player) {
-                player.setVolume(e.target.value)
-            }
-        })
+      $screenshot.addEventListener("click", function () {
+        if (player) player.screenshot();
+      });
 
+      $destroy.addEventListener("click", function () {
+        if (player) {
+          player.destroy();
+          player = null;
+        }
+      });
+
+      $getVersion.addEventListener("click", () => {
+        if (player) {
+          console.log(player.getVersion());
+        }
+      });
+
+      $setDebug.addEventListener("change", (e) => {
+        if (player) {
+          player.setDebug(e.target.value !== "0");
+        }
+      });
+
+      $setRotate.addEventListener("change", (e) => {
+        if (player) {
+          player.setRotate(e.target.value);
+        }
+      });
+      $setScaleMode.addEventListener("change", (e) => {
+        if (player) {
+          player.setScaleMode(e.target.value);
+        }
+      });
+      $setVolume.addEventListener("blur", (e) => {
+        if (player) {
+          player.volume = +e.target.value;
+        }
+      });
     </script>
-
-</body>
-
+  </body>
 </html>

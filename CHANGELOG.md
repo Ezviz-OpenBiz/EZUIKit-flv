@@ -3,6 +3,8 @@
 ### Feat
 
 - 新增主题 UI
+- 新的全屏api  `fullscreen` 和退出全屏 `exitFullscreen`
+- `openSound` 和 `closeSound` 不再推荐， 使用`player.current.volume = 0.8` 和 `player.current.muted = true` 代替
 
 ## v1.0.3
 
