@@ -1,5 +1,5 @@
 import "./Player.css";
-import EzuikitFlv from "ezuikit-flv/style.css";
+import "ezuikit-flv/style.css";
 import { useCallback, useEffect, useRef } from "react";
 import EzuikitFlv from "ezuikit-flv";
 
@@ -43,6 +43,8 @@ function Player() {
         autoPlay: true, // 默认自动播放
         // decoder: "decoder.js", // 软解解码资源 （wasm 要和js 在同一个文件夹中）
       });
+      // 调试api 使用
+      window.player = playerRef.current;
       // playerRef.current.play();
     }
   };
@@ -67,6 +69,12 @@ function Player() {
     }
   }, []);
 
+  const handleScreenshot = useCallback(() => {
+    if (playerRef.current) {
+      playerRef.current.screenshot();
+    }
+  }, []);
+
   const handleDestroy = useCallback(() => {
     if (playerRef.current) {
       playerRef.current.destroy();
@@ -76,25 +84,26 @@ function Player() {
 
   const handleOpenSound = useCallback(() => {
     if (playerRef.current) {
-      playerRef.current.openSound();
+      playerRef.current.muted = false
+      playerRef.current.volume = 0.8
     }
   }, []);
 
   const handleCloseSound = useCallback(() => {
     if (playerRef.current) {
-      playerRef.current.closeSound();
+      playerRef.current.muted = true
     }
   }, []);
 
   const handleFullScreen = useCallback(() => {
     if (playerRef.current) {
-      playerRef.current.fullScreen();
+      playerRef.current.fullscreen();
     }
   }, []);
 
   const handleCancelFullScreen = useCallback(() => {
     if (playerRef.current) {
-      playerRef.current.cancelFullScreen();
+      playerRef.current.exitFullscreen();
     }
   }, []);
 
@@ -120,6 +129,7 @@ function Player() {
           <button onClick={handleInIt}>init</button>
           <button onClick={handlePlay}>播放</button>
           <button onClick={handlePause}>暂停</button>
+          <button onClick={handleScreenshot}>截图</button>
           <button onClick={handleOpenSound}>打开声音</button>
           <button onClick={handleCloseSound}>关闭声音</button>
           <button onClick={handleFullScreen}>开启全屏</button>
