@@ -1,268 +1,288 @@
-export namespace PLAYER_PLAY_PROTOCOL {
-    let websocket: number;
-    let fetch: number;
-    let webrtc: number;
-}
-export namespace DEMUX_TYPE {
-    let flv: string;
-    let m7s: string;
-}
-export namespace FILE_SUFFIX {
-    let mp4: string;
-    let webm: string;
-}
-export const MEDIA_SOURCE_UPDATE_END_TIMEOUT: number;
-export namespace DEFAULT_PLAYER_OPTIONS {
-    export let videoBuffer: number;
-    export let videoBufferDelay: number;
-    export let scaleMode: number;
-    export let debug: boolean;
-    export let loadingTimeout: number;
-    export let heartTimeout: number;
-    export let timeout: number;
-    export let loadingTimeoutReplay: boolean;
-    export let heartTimeoutReplay: boolean;
-    export let loadingTimeoutReplayTimes: number;
-    export let heartTimeoutReplayTimes: number;
-    export let keepScreenOn: boolean;
-    export let isNotMute: boolean;
-    export let hasAudio: boolean;
-    export let volume: number;
-    export let hasVideo: boolean;
-    export let decoder: string;
-    export let staticPath: string;
-    export let url: string;
-    export let rotate: number;
-    export let forceNoOffscreen: boolean;
-    import protocol = PLAYER_PLAY_PROTOCOL.fetch;
-    export { protocol };
-    import demuxType = DEMUX_TYPE.flv;
-    export { demuxType };
-    export let useMSE: boolean;
-    export let autoWasm: boolean;
-    export let wasmDecodeErrorReplay: boolean;
-    export let openWebglAlignment: boolean;
-    export let wasmDecodeAudioSyncVideo: boolean;
-    export let useWebFullScreen: boolean;
-    export namespace loggerOptions {
-        let level: string;
-    }
-}
-export namespace WORKER_CMD_TYPE {
-    let init: string;
-    let initVideo: string;
-    let render: string;
-    let playAudio: string;
-    let initAudio: string;
-    let kBps: string;
-    let decode: string;
-    let audioCode: string;
-    let videoCode: string;
-    let wasmError: string;
-}
-export namespace WASM_ERROR {
-    let invalidNalUnitSize: string;
-}
-export namespace MEDIA_TYPE {
-    let audio: number;
-    let video: number;
-}
-export namespace FLV_MEDIA_TYPE {
-    let audio_1: number;
-    export { audio_1 as audio };
-    let video_1: number;
-    export { video_1 as video };
-}
-export namespace WORKER_SEND_TYPE {
-    let init_1: string;
-    export { init_1 as init };
-    let decode_1: string;
-    export { decode_1 as decode };
-    export let audioDecode: string;
-    export let videoDecode: string;
-    export let close: string;
-    export let updateConfig: string;
-}
-export namespace EVENTS {
-    export let fullscreen: string;
-    export let webFullscreen: string;
-    export let decoderWorkerInit: string;
-    export let play: string;
-    export let playing: string;
-    export let pause: string;
-    export let mute: string;
-    export let load: string;
-    export let loading: string;
-    export let videoInfo: string;
-    export let timeUpdate: string;
-    export let audioInfo: string;
-    export let log: string;
-    export let error: string;
-    let kBps_1: string;
-    export { kBps_1 as kBps };
-    let timeout_1: string;
-    export { timeout_1 as timeout };
-    export let delayTimeout: string;
-    let loadingTimeout_1: string;
-    export { loadingTimeout_1 as loadingTimeout };
-    export let stats: string;
-    export let performance: string;
-    export let buffer: string;
-    export let videoFrame: string;
-    export let start: string;
-    export let metadata: string;
-    export let resize: string;
-    export let streamEnd: string;
-    export let streamSuccess: string;
-    export let streamMessage: string;
-    export let streamError: string;
-    export let volumechange: string;
-    export let destroy: string;
-    export let mseSourceOpen: string;
-    export let mseSourceClose: string;
-    export let mseSourceBufferError: string;
-    export let mseSourceBufferBusy: string;
-    export let mseSourceBufferFull: string;
-    export let videoWaiting: string;
-    export let videoTimeUpdate: string;
-    export let videoSyncAudio: string;
-    export let playToRenderTimes: string;
-}
-export namespace FLV_EVENTS {
-    import load_1 = EVENTS.load;
-    export { load_1 as load };
-    import timeUpdate_1 = EVENTS.timeUpdate;
-    export { timeUpdate_1 as timeUpdate };
-    import videoInfo_1 = EVENTS.videoInfo;
-    export { videoInfo_1 as videoInfo };
-    import audioInfo_1 = EVENTS.audioInfo;
-    export { audioInfo_1 as audioInfo };
-    import error_1 = EVENTS.error;
-    export { error_1 as error };
-    import kBps_2 = EVENTS.kBps;
-    export { kBps_2 as kBps };
-    import log_1 = EVENTS.log;
-    export { log_1 as log };
-    import start_1 = EVENTS.start;
-    export { start_1 as start };
-    import timeout_2 = EVENTS.timeout;
-    export { timeout_2 as timeout };
-    import loadingTimeout_2 = EVENTS.loadingTimeout;
-    export { loadingTimeout_2 as loadingTimeout };
-    import delayTimeout_1 = EVENTS.delayTimeout;
-    export { delayTimeout_1 as delayTimeout };
-    let fullscreen_1: string;
-    export { fullscreen_1 as fullscreen };
-    import webFullscreen_1 = EVENTS.webFullscreen;
-    export { webFullscreen_1 as webFullscreen };
-    import play_1 = EVENTS.play;
-    export { play_1 as play };
-    import pause_1 = EVENTS.pause;
-    export { pause_1 as pause };
-    import mute_1 = EVENTS.mute;
-    export { mute_1 as mute };
-    import stats_1 = EVENTS.stats;
-    export { stats_1 as stats };
-    import volumechange_1 = EVENTS.volumechange;
-    export { volumechange_1 as volumechange };
-    import performance_1 = EVENTS.performance;
-    export { performance_1 as performance };
-    import playToRenderTimes_1 = EVENTS.playToRenderTimes;
-    export { playToRenderTimes_1 as playToRenderTimes };
-}
-export namespace EVENTS_ERROR {
-    export let playError: string;
-    export let fetchError: string;
-    export let websocketError: string;
-    export let webcodecsH265NotSupport: string;
-    export let webcodecsDecodeError: string;
-    export let webcodecsWidthOrHeightChange: string;
-    export let mediaSourceH265NotSupport: string;
-    import mediaSourceFull = EVENTS.mseSourceBufferFull;
-    export { mediaSourceFull };
-    import mseSourceBufferError_1 = EVENTS.mseSourceBufferError;
-    export { mseSourceBufferError_1 as mseSourceBufferError };
-    export let mediaSourceAppendBufferError: string;
-    export let mediaSourceBufferListLarge: string;
-    export let mediaSourceAppendBufferEndTimeout: string;
-    export let wasmDecodeError: string;
-    export let webglAlignmentError: string;
-}
-export namespace WEBSOCKET_STATUS {
-    export let notConnect: string;
-    export let open: string;
-    let close_1: string;
-    export { close_1 as close };
-    let error_2: string;
-    export { error_2 as error };
-}
-export namespace BUFFER_STATUS {
-    let empty: string;
-    let buffering: string;
-    let full: string;
-}
-export namespace SCREENSHOT_TYPE {
-    let download: string;
-    let base64: string;
-    let blob: string;
-}
-export const VIDEO_ENC_TYPE: {
+export declare const PLAYER_PLAY_PROTOCOL: {
+    websocket: number;
+    fetch: number;
+    webrtc: number;
+};
+export declare const DEMUX_TYPE: {
+    flv: string;
+    m7s: string;
+};
+export declare const FILE_SUFFIX: {
+    mp4: string;
+    webm: string;
+};
+export declare const MEDIA_SOURCE_UPDATE_END_TIMEOUT: number;
+export declare const DEFAULT_PLAYER_OPTIONS: {
+    videoBuffer: number;
+    videoBufferDelay: number;
+    scaleMode: number;
+    debug: boolean;
+    heartTimeout: number;
+    heartTimeoutReplayTimes: number;
+    timeout: number;
+    loadingTimeout: number;
+    loadingTimeoutDelay: number;
+    loadingTimeoutReplayTimes: number;
+    keepScreenOn: boolean;
+    muted: boolean;
+    hasAudio: boolean;
+    volume: number;
+    hasVideo: boolean;
+    decoder: string;
+    staticPath: string;
+    url: string;
+    rotate: number;
+    isLive: boolean;
+    forceNoOffscreen: boolean;
+    protocol: number;
+    demuxType: string;
+    useMSE: boolean;
+    wasmDecodeErrorReplay: boolean;
+    openWebglAlignment: boolean;
+    wasmDecodeAudioSyncVideo: boolean;
+    autoPlay: boolean;
+    loggerOptions: {
+        level: string;
+    };
+};
+export declare const WORKER_CMD_TYPE: {
+    init: string;
+    initVideo: string;
+    render: string;
+    playAudio: string;
+    initAudio: string;
+    kBps: string;
+    decode: string;
+    audioCode: string;
+    videoCode: string;
+    wasmError: string;
+};
+export declare const WASM_ERROR: {
+    invalidNalUnitSize: string;
+};
+export declare const MEDIA_TYPE: {
+    audio: number;
+    video: number;
+};
+export declare const FLV_MEDIA_TYPE: {
+    audio: number;
+    video: number;
+};
+export declare const WORKER_SEND_TYPE: {
+    init: string;
+    decode: string;
+    audioDecode: string;
+    videoDecode: string;
+    close: string;
+    updateConfig: string;
+};
+export declare const EVENTS: {
+    fullscreenChange: string;
+    orientationChange: string;
+    decoderWorkerInit: string;
+    play: string;
+    playing: string;
+    pause: string;
+    mute: string;
+    load: string;
+    loading: string;
+    loaded: string;
+    videoInfo: string;
+    timeUpdate: string;
+    timeUpdateOSD: string;
+    audioInfo: string;
+    log: string;
+    error: string;
+    kBps: string;
+    timeout: string;
+    heartTimeout: string;
+    heartRetryTimes: string;
+    delayTimeout: string;
+    loadingTimeout: string;
+    loadingRetryTimes: string;
+    stats: string;
+    performance: string;
+    buffer: string;
+    videoFrame: string;
+    start: string;
+    metadata: string;
+    resize: string;
+    streamEnd: string;
+    streamSuccess: string;
+    streamMessage: string;
+    streamError: string;
+    volumechange: string;
+    audioCodecUnsupported: string;
+    unrecoverableEarlyEof: string;
+    destroy: string;
+    mseSourceOpen: string;
+    mseSourceClose: string;
+    mseSourceBufferError: string;
+    mseSourceBufferBusy: string;
+    mseSourceBufferFull: string;
+    videoWaiting: string;
+    videoTimeUpdate: string;
+    videoSyncAudio: string;
+    playToRenderTimes: string;
+    localVideoRecords: string;
+    getDefinitionListResult: string;
+    definitionChange: string;
+    definitionListChange: string;
+    playbackRateListChange: string;
+    playbackRateChange: string;
+    decoderLoaded: string;
+    end: string;
+} & {
+    loading: string;
+    play: string;
+    capturePicture: string;
+    volumechange: string;
+    audioInfo: string;
+    videoInfo: string;
+    fullscreen: string;
+    exitFullscreen: string;
+    fullscreenChange: string;
+    resize: string;
+    orientationChange: string;
+    audioCodecUnsupported: string;
+    changeTheme: string;
+    changeRecType: string;
+    changeDefinition: string;
+    changeSpeed: string;
+    control: {
+        play: string;
+        capturePicture: string;
+        volumechange: string;
+        volumePanelOpenChange: string;
+        controlsBarOpenChange: string;
+        headerMoreShow: string;
+        footerMoreShow: string;
+        beforeMountControls: string;
+        mountedControls: string;
+        beforeUnmountControls: string;
+        unmountedControls: string;
+        changeRecType: string;
+        changeDefinition: string;
+        definitionPanelOpenChange: string;
+        changeSpeed: string;
+        speedPanelOpenChange: string;
+    };
+    theme: {
+        beforeDestroy: string;
+        destroyed: string;
+    };
+    message: string;
+};
+export declare const FLV_EVENTS: {
+    load: string;
+    timeUpdate: string;
+    videoInfo: string;
+    audioInfo: string;
+    error: string;
+    kBps: string;
+    log: string;
+    start: string;
+    delayTimeout: string;
+    fullscreen: string;
+    play: string;
+    pause: string;
+    mute: string;
+    stats: string;
+    volumechange: string;
+    performance: string;
+    playToRenderTimes: string;
+};
+export declare const EVENTS_ERROR: {
+    playError: string;
+    fetchError: string;
+    websocketError: string;
+    webcodecsH265NotSupport: string;
+    webcodecsDecodeError: string;
+    webcodecsWidthOrHeightChange: string;
+    mediaSourceH265NotSupport: string;
+    mediaSourceFull: string;
+    mseSourceBufferError: string;
+    mediaSourceAppendBufferError: string;
+    mediaSourceBufferListLarge: string;
+    mediaSourceAppendBufferEndTimeout: string;
+    wasmDecodeError: string;
+    webglAlignmentError: string;
+};
+export declare const WEBSOCKET_STATUS: {
+    notConnect: string;
+    open: string;
+    close: string;
+    error: string;
+};
+export declare const BUFFER_STATUS: {
+    empty: string;
+    buffering: string;
+    full: string;
+};
+export declare const SCREENSHOT_TYPE: {
+    download: string;
+    base64: string;
+    blob: string;
+};
+export declare const VIDEO_ENC_TYPE: {
     7: string;
     12: string;
 };
-export namespace VIDEO_ENC_CODE {
-    let h264: number;
-    let h265: number;
-}
-export const AUDIO_ENC_TYPE: {
+export declare const VIDEO_ENC_CODE: {
+    h264: number;
+    h265: number;
+};
+export declare const AUDIO_ENC_TYPE: {
     10: string;
     7: string;
     8: string;
 };
-export namespace H265_NAL_TYPE {
-    let vps: number;
-    let sps: number;
-    let pps: number;
-}
-export const CONTROL_HEIGHT: 38;
-export namespace SCALE_MODE_TYPE {
-    let full_1: number;
-    export { full_1 as full };
-    export let auto: number;
-    export let fullAuto: number;
-}
-export namespace CANVAS_RENDER_TYPE {
-    let webcodecs: string;
-    let webgl: string;
-    let offscreen: string;
-}
-export namespace ENCODED_VIDEO_TYPE {
-    let key: string;
-    let delta: string;
-}
-export namespace MP4_CODECS {
-    let avc: string;
-    let hev: string;
-}
-export namespace MEDIA_SOURCE_STATE {
-    export let ended: string;
-    let open_1: string;
-    export { open_1 as open };
-    export let closed: string;
-}
-export const FRAG_DURATION: number;
-export const AUDIO_SYNC_VIDEO_DIFF: 1000;
-export namespace HOT_KEY {
-    let esc: number;
-    let arrowUp: number;
-    let arrowDown: number;
-}
-export namespace WCS_ERROR {
-    let keyframeIsRequiredError: string;
-    let canNotDecodeClosedCodec: string;
-}
-export namespace FETCH_ERROR {
-    let abortError1: string;
-    let abortError2: string;
-    let abort: string;
-}
+export declare const H265_NAL_TYPE: {
+    vps: number;
+    sps: number;
+    pps: number;
+};
+export declare const CONTROL_HEIGHT = 38;
+export declare const SCALE_MODE_TYPE: {
+    full: number;
+    auto: number;
+    fullAuto: number;
+};
+export declare const CANVAS_RENDER_TYPE: {
+    webcodecs: string;
+    webgl: string;
+    offscreen: string;
+};
+export declare const ENCODED_VIDEO_TYPE: {
+    key: string;
+    delta: string;
+};
+export declare const MP4_CODECS: {
+    avc: string;
+    hev: string;
+};
+export declare const MEDIA_SOURCE_STATE: {
+    ended: string;
+    open: string;
+    closed: string;
+};
+export declare const FRAG_DURATION: number;
+export declare const AUDIO_SYNC_VIDEO_DIFF = 1000;
+export declare const HOT_KEY: {
+    esc: number;
+    arrowUp: number;
+    arrowDown: number;
+};
+export declare const WCS_ERROR: {
+    keyframeIsRequiredError: string;
+    canNotDecodeClosedCodec: string;
+};
+export declare const FETCH_ERROR: {
+    abortError1: string;
+    abortError2: string;
+    abort: string;
+};
+/**
+ * 开放平台https接口
+ */
+export declare const HTTP_ENV_DOMAIN = "https://open.ys7.com/";

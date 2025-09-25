@@ -2,16 +2,18 @@ export default EzuikitFlv;
 /**
  * @classdesc EzuikitFlv.js 播放flv直播流， 支持播放h264/h265的直播视频流
  * @example
- * ```js
+ *
+ * import "ezuikit-flv/style.css"
+ * import EzuikitFlv from 'ezuikit-flv'
+ *
  * const flv = new EzuikitFlv({
  *  id: "EleId",
  *  url: "https://open.ys7.com/v3/openlive/E71992743_1_1.flv"
  * })
- * ```
  */
-declare class EzuikitFlv extends EventEmitter<string | symbol, any> {
+declare class EzuikitFlv extends Theme {
     /**
-     * @description ERROR
+     * @description EzuikitFlv error events
      * @static
      * @member
      * @example
@@ -33,9 +35,122 @@ declare class EzuikitFlv extends EventEmitter<string | symbol, any> {
         wasmDecodeError: string;
         webglAlignmentError: string;
     };
+    static EVENTS: {
+        fullscreenChange: string;
+        orientationChange: string;
+        decoderWorkerInit: string;
+        play: string;
+        playing: string;
+        pause: string;
+        mute: string;
+        load: string;
+        loading: string;
+        loaded: string;
+        videoInfo: string;
+        timeUpdate: string;
+        timeUpdateOSD: string;
+        audioInfo: string;
+        log: string;
+        error: string;
+        kBps: string;
+        timeout: string;
+        heartTimeout: string;
+        heartRetryTimes: string;
+        delayTimeout: string;
+        loadingTimeout: string;
+        loadingRetryTimes: string;
+        stats: string;
+        performance: string;
+        buffer: string;
+        videoFrame: string;
+        start: string;
+        metadata: string;
+        resize: string;
+        streamEnd: string;
+        streamSuccess: string;
+        streamMessage: string;
+        streamError: string;
+        volumechange: string;
+        audioCodecUnsupported: string;
+        unrecoverableEarlyEof: string;
+        destroy: string;
+        mseSourceOpen: string;
+        mseSourceClose: string;
+        mseSourceBufferError: string;
+        mseSourceBufferBusy: string;
+        mseSourceBufferFull: string;
+        videoWaiting: string;
+        videoTimeUpdate: string;
+        videoSyncAudio: string;
+        playToRenderTimes: string;
+        localVideoRecords: string;
+        getDefinitionListResult: string;
+        definitionChange: string;
+        definitionListChange: string;
+        playbackRateListChange: string;
+        playbackRateChange: string;
+        decoderLoaded: string;
+        end: string;
+    } & {
+        loading: string;
+        play: string;
+        capturePicture: string;
+        volumechange: string;
+        audioInfo: string;
+        videoInfo: string;
+        fullscreen: string;
+        exitFullscreen: string;
+        fullscreenChange: string;
+        resize: string;
+        orientationChange: string;
+        audioCodecUnsupported: string;
+        changeTheme: string;
+        changeRecType: string;
+        changeDefinition: string;
+        changeSpeed: string;
+        control: {
+            play: string; /**
+             * @description 初始化播放
+             * @private
+             * @param {string | HTMLElement} $container
+             * @param {FlvOptions} options
+             * @return {void}
+             */
+            capturePicture: string;
+            volumechange: string;
+            volumePanelOpenChange: string;
+            controlsBarOpenChange: string;
+            headerMoreShow: string;
+            footerMoreShow: string;
+            beforeMountControls: string;
+            mountedControls: string;
+            beforeUnmountControls: string;
+            unmountedControls: string;
+            changeRecType: string;
+            changeDefinition: string;
+            definitionPanelOpenChange: string;
+            changeSpeed: string;
+            speedPanelOpenChange: string;
+        };
+        theme: {
+            beforeDestroy: string;
+            destroyed: string;
+        };
+        message: string;
+    };
+    static QUALITY_ENUM: {
+        0: string;
+        1: string;
+        2: string;
+        3: string;
+        4: string;
+        5: string;
+        6: string;
+    };
+    /** 旋转角度 */
+    static ROTATE: number[];
     /** */
     static TIMEOUT: {
-        loadingTimeout: string;
         delayTimeout: string;
     };
     /**
@@ -44,6 +159,11 @@ declare class EzuikitFlv extends EventEmitter<string | symbol, any> {
      * @returns {FlvOptions}
      */
     private static _setOptions;
+    /**
+     * 版本号 EzuikitFlv.version
+     * @example
+     * EzuikitFlv.version
+     */
     static version: string;
     /**
      * @description 静态方法 判断是否支持播放地址
@@ -54,9 +174,7 @@ declare class EzuikitFlv extends EventEmitter<string | symbol, any> {
      * @static
      *
      * @example
-     * ```js
      * EzuikitFlv.supportType({url: "https://open.ys7.com/v3/openlive/E71992743_1_1.flv",  type:'flv'})
-     * ```
      */
     static supportType(options: {
         url?: string | undefined;
@@ -67,19 +185,92 @@ declare class EzuikitFlv extends EventEmitter<string | symbol, any> {
      * @param {FlvOptions} options
      */
     constructor(options: FlvOptions);
-    event: EventEmitter<string | symbol, any>;
-    _opt: FlvOptions;
+    urlInfo: {};
+    /** @type {Services} */
+    services: Services;
+    /** @private */
+    private _loadingTimeoutDelayTimer;
+    _heartTimeoutDelayTimer: any;
+    _opt: any;
     $container: any;
+    _heartTimeoutDelayTimes: number;
     _loadingTimeoutReplayTimes: number;
-    _heartTimeoutReplayTimes: number;
     events: Events;
+    _videoInfo: {};
+    _currentPlayDate: string;
+    definitionList: any[];
+    definition: {};
     /**
-     * @description 销毁
-     * @example
-     * flv.destroy()
+     * @private
      */
-    destroy(): void;
+    private _playbackRate;
+    playbackRateList: number[];
+    playbackRecords: any[];
+    _onvisibilitychange(): void;
+    /**
+     * https 接口调用 仅针对萤石设备
+     * @since @1.0.3
+     * @private
+     */
+    private _httpServices;
+    /**
+     * @description 自定义设置清晰度列表， 仅对萤石设备预览生效, 需要第一次 definitionListChange 事件监听后调用, 不然会被接口覆盖
+     * @param {VideoLevel} list
+     * @since 1.0.3
+     * @returns {void}
+     */
+    setDefinitionList(list: VideoLevel): void;
+    /**
+     * @description 切换清晰度，仅对萤石设备预览生效
+     * @param {VideoLevel} definition 清晰
+     * @since 1.0.3
+     * @returns {Promise<number>}  0 成功（不代表取流成功）， 1 失败
+     */
+    switchDefinition(definition: VideoLevel): Promise<number>;
+    /**
+     * @description 自定义设置倍速列表, 仅对萤石设备回放生效
+     * @param {Array<number>} list 倍速列表
+     * @since 1.0.3
+     * @returns {void}
+     */
+    setPlaybackRateList(list: Array<number>): void;
+    /**
+     * @description 设置倍速，仅对萤石设备回放生效
+     * @since 1.0.3
+     */
+    set playbackRate(rate: number);
+    /**
+     * @description 获取倍速
+     * @since 1.0.3
+     */
+    get playbackRate(): number;
+    /**
+     * @description 切换倍速，仅对萤石设备回放生效
+     * @param {number} rate
+     * @since 1.0.3
+     * @returns {Promise<number>} 0 成功（不代表取流成功）， 1 失败
+     */
+    switchPlaybackRate(rate: number): Promise<number>;
+    /**
+     * @description 获取回放地址
+     * @private
+     * @returns {Promise<string>} // 空字符表示失败
+     */
+    private _getNewRecordPlayUrl;
+    /**
+     * @description 是否是萤石开放平台回放
+     * @param {string} url
+     * @private
+     * @since @1.0.3
+     * @returns {boolean}
+     */
+    private _isEzvizPlayback;
     player: Player;
+    /**
+     * @private
+     * @param {obejct} videoInfo
+     */
+    private _handlevideoInfo;
     /**
      * @description 初始化播放
      * @private
@@ -103,8 +294,9 @@ declare class EzuikitFlv extends EventEmitter<string | symbol, any> {
      * @description 是否开启控制台调试打印
      * @param {boolean} value true: 开启， false: 关闭
      * @returns {void}
+     * @deprecated 推荐 player.setLogger({level: "WARN"})， 后面版本会移除
      * @example
-     * flv.setDebug(false)
+     * player.setDebug(false)
      */
     setDebug(value: boolean): void;
     /**
@@ -114,52 +306,45 @@ declare class EzuikitFlv extends EventEmitter<string | symbol, any> {
      */
     setLogger(opt?: {}): void;
     /**
-     * @description 关闭声音
+     * @description 关闭声音（非静音）
      * @returns {void}
+     * @deprecated 推荐 player.volume = 0， 后面版本会移除
      * @example
-     * flv.closeSound()
+     * player.closeSound()
      */
     closeSound(): void;
     /**
-     * @description 开启声音 默认音量 0.5
+     * @description 开启声音 默认音量 0.8,
      * @returns {void}
+     * @deprecated 推荐 player.volume = 0.8， 后面版本会移除
      * @example
-     * flv.openSound() //
+     * player.openSound() //
      */
     openSound(): void;
     /**
      * @description 设置音量
      * @param {number} value 音量 0～1
      * @returns {void}
+     * @deprecated 后面版本会移除, 推荐 player.volume = 0.8,
      * @example
-     * flv.setVolume(0.5)
+     * player.setVolume(0.8)
      */
     setVolume(value: number): void;
-    set volume(value: any);
-    get volume(): any;
     /**
      * @description 获取音量， 音量 0～1
      * @returns {number}
+     * @deprecated 后面版本会移除, 推荐 player.volume
      * @example
-     * flv.getVolume()
+     * player.getVolume()
      */
     getVolume(): number;
     /**
      * @description 音频恢复
      * @returns {void}
      * @example
-     * flv.audioResume()
+     * player.audioResume()
      */
     audioResume(): void;
-    /**
-     * @description 设置超时时长, 单位秒 在连接成功之前和播放中途,如果超过设定时长无数据返回,则回调timeout事件
-     * @private
-     * @param {number} time 设置超时时长, 单位秒
-     * @returns {void}
-     * @example
-     * flv.setTimeout(3)
-     */
-    private setTimeout;
     /**
      * @description 设置渲染的模式 (video 不支持)
      * @private
@@ -176,14 +361,7 @@ declare class EzuikitFlv extends EventEmitter<string | symbol, any> {
      * flv.pause()
      */
     pause(): Promise<unknown>;
-    /**
-     * @description 关闭视频,不释放底层资源
-     * @private
-     * @returns {void}
-     * @example
-     * flv.close()
-     */
-    private close;
+    _delayTimeoutTimer: any;
     /**
      * @description 清理画布为黑色背景
      * @private
@@ -201,6 +379,10 @@ declare class EzuikitFlv extends EventEmitter<string | symbol, any> {
      */
     play(options?: (string | FlvOptions) | undefined): Promise<any>;
     /**
+     * @private
+     */
+    private __play;
+    /**
      * @description 播放
      * @private
      * @param {string} url
@@ -209,13 +391,30 @@ declare class EzuikitFlv extends EventEmitter<string | symbol, any> {
      */
     private _play;
     /**
-     * @description 重新调整视图大小
-     * @param {number=} width  宽
-     * @param {number=} height  高
-     * @example
-     * flv.resize()
+     * @private
      */
-    resize(width?: number | undefined, height?: number | undefined): void;
+    private _onDelayTimeout;
+    /**
+     * @private
+     */
+    private _onHeartTimeout;
+    /**
+     * @private
+     */
+    private _onLoadingTimeout;
+    /**
+     * @private
+     */
+    private _onStreamSuccess;
+    /**
+     * @private
+     */
+    private _onStreamError;
+    /**
+     * 获取萤石直播间播放失败的原因
+     * @private
+     */
+    private _getDeviceStreamErrorInfo;
     /**
      * @description 设置最大缓冲时长，单位秒，播放器会自动消除延迟。软解
      * @private
@@ -226,8 +425,9 @@ declare class EzuikitFlv extends EventEmitter<string | symbol, any> {
     private setBufferTime;
     /**
      * @description 设置旋转角度，支持，0(默认), 90, 180, 270 四个值。
+     * @param {number} deg 旋转角度取值 EzuikitFlv.ROTATE
      * @returns {Promise}
-     * @param {number} deg
+     * @deprecated 不在使用
      * @example
      * flv.setRotate(90) // 旋转90度
      */
@@ -246,65 +446,54 @@ declare class EzuikitFlv extends EventEmitter<string | symbol, any> {
      */
     setKeepScreenOn(): void;
     /**
-     * @description 全屏(取消全屏)播放视频
-     * @private
-     * @param {Boolean} flag
+     * 当前视频的信息, 推荐使用监听 videoInfo 事件
+     * @returns {Object}
      */
-    private _setFullscreen;
+    get videoInfo(): any;
     /**
-     * @description 全屏播放视频(不支持移动端)
-     * @returns {Promise}
-     * @example
-     * flv.fullScreen() // 全屏
+     * 当前播放时间（从0 开始 单位秒）
+     * @returns {number}
+     */
+    get currentTime(): number;
+    /**
+     * @description 截图，调用后弹出下载框保存截图, (硬解下 Mac Safari 部分截图结果是黑色的)
+     * @param {string=} filename 保存的文件名, 默认 时间戳
+     * @param {string=} format 截图的格式，可选png或jpeg或者webp ,默认 png
+     * @param {number=} quality 当格式是jpeg或者webp时，压缩质量，取值0 ~ 1 ,默认 0.92
+     * @param {("download" | "base64" | "blob")} type  download,base64,blob, 默认download
      *
-     */
-    fullScreen(): Promise<any>;
-    /**
-     * @description 全屏播放视频(不支持移动端)
-     * @returns {Promise}
+     * @returns {string | Blob | undefined}   undefined 代表截图失败
+     * @since 1.0.3
      * @example
-     * flv.fullscreen() // 全屏
-     *
+     * player.screenshot()
+     * player.screenshot("filename", "jpeg", 0.7, "download")
      */
-    fullscreen(): Promise<any>;
-    /**
-     * @description 退出全屏播放视频
-     * @returns {Promise}
-     * @example
-     * flv.cancelFullScreen() // 退出全屏
-     */
-    cancelFullScreen(): Promise<any>;
-    /**
-     * @description 取消全屏播放视频
-     * @returns {Promise}
-     * @example
-     * flv.exitFullscreen() // 全屏
-     */
-    exitFullscreen(): Promise<any>;
-    /**
-     * @description 退出全屏播放视频
-     * @private
-     * @returns {Promise}
-     */
-    private _exitFullscreen;
+    screenshot(filename?: string | undefined, format?: string | undefined, quality?: number | undefined, type?: ("download" | "base64" | "blob")): string | Blob | undefined;
     /**
      * @description 获取播放器的状态
      * @returns {PlayerState} 播放器的状态
      * @example
-     * flv.getState()
+     * player.getState()
      */
     getState(): PlayerState;
     /**
      * @description 获取设置
      * @returns {object}
+     *
+     * @example
+     * player.getOptions()
      */
     getOptions(): object;
     /**
      * @description 获取版本
      * @returns {string}
+     *
+     * @example
+     * player.getVersion()
      */
     getVersion(): string;
 }
-import EventEmitter from 'eventemitter3';
+import Theme from '@ezviz/player-theme';
+import Services from './services';
 import Events from './utils/events';
 import Player from './player';

@@ -1,7 +1,7 @@
 import CommonLoader from '../commonLoader';
-import { ScreenshotFormat } from '../interface';
-import HardPlayer from '.';
-export default class VideoLoader extends CommonLoader {
+import { type ScreenshotFormat } from '../interface';
+import type HardPlayer from '.';
+export default class VideoLoader extends CommonLoader<HTMLVideoElement> {
     _delayPlay: boolean;
     $canvasElement: HTMLCanvasElement;
     canvasContext: CanvasRenderingContext2D | null;
@@ -10,6 +10,7 @@ export default class VideoLoader extends CommonLoader {
     $videoElement: HTMLVideoElement;
     player: HardPlayer;
     $posterElement: HTMLImageElement;
+    _videoMuted: boolean;
     constructor(player: HardPlayer);
     destroy(): void;
     fixChromeVideoFlashBug(): void;
@@ -25,4 +26,6 @@ export default class VideoLoader extends CommonLoader {
     resize(): void;
     _resizeElement($Element: HTMLVideoElement | HTMLImageElement): void;
     isPlaying(): boolean;
+    get currentTime(): number;
+    _enableSoundOnUserInteraction(): void;
 }

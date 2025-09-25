@@ -1,16 +1,17 @@
+import Emitter from '../utils/emitter';
 export default class FetchLoader extends Emitter {
-    constructor(player: any);
     player: any;
     playing: boolean;
     abortController: AbortController;
     streamRate: (size: any) => void;
+    _streamSuccess: boolean;
+    constructor(player: any);
     destroy(): void;
     /**
      *
      * @param url
      * @param options
      */
-    fetchStream(url: any, options?: {}): void;
+    fetchStream(url: string, options?: any): void;
     abort(): void;
 }
-import Emitter from '../utils/emitter';

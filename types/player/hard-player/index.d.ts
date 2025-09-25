@@ -13,44 +13,48 @@ export default class HardPlayer extends BasePlayer {
     video: Video;
     events: Events;
     _playing: boolean;
-    _lastVolume: number;
     _loading: any;
     _audioTimestamp: number;
     _videoTimestamp: number;
     _times: any;
     $container: HTMLElement;
     _opt: RequiredFlvOptions;
-    _hasLoaded: boolean;
-    _checkHeartTimeout: number;
+    _checkHeartTimeout: number | null;
     _stats: any;
-    _checkLoadingTimeout: number;
     control: Control;
     width: number;
     height: number;
     _pause: boolean;
     _decodedFrames: number;
+    _checkLoadingTimeout: number;
     constructor(container: HTMLElement, options: RequiredFlvOptions);
-    close(): Promise<unknown>;
+    close(): void;
     _createPlayer(options: RequiredFlvOptions): void;
+    /**
+     * @private
+     */
+    _removeFlvEvents(): void;
+    /**
+     * @private
+     */
     _flvEvents(): void;
+    _onVideoLoadstart(): void;
+    _onVideoStreamSuccess(): void;
     getOption(): RequiredFlvOptions;
     emitError(errorType: string, message?: string): void;
     /**
      * @description 销毁实例
      */
     destroy(): void;
+    _destroy(): void;
     resetStats(): void;
-    set fullscreen(value: any);
-    get fullscreen(): any;
-    set webFullscreen(value: boolean);
-    get webFullscreen(): boolean;
-    set loaded(value: boolean);
     get loaded(): boolean;
     set playing(value: boolean);
     get playing(): boolean;
+    get muted(): boolean;
+    set muted(muted: boolean);
     get volume(): number;
     set volume(value: number);
-    get lastVolume(): number;
     set loading(value: any);
     get loading(): any;
     set audioTimestamp(value: number);
@@ -58,6 +62,14 @@ export default class HardPlayer extends BasePlayer {
     set videoTimestamp(value: number);
     get videoTimestamp(): number;
     get isDebug(): boolean;
+    /**
+     * @description 检查等待时间 （loading 等待时间）
+     */
+    checkLoadingTimeout(): void;
+    /**
+     * @description 清除加载超时
+     */
+    clearCheckLoadingTimeout(): void;
     /**
      * 心跳检查
      */
@@ -67,12 +79,7 @@ export default class HardPlayer extends BasePlayer {
      * @description 心跳检查，如果渲染间隔暂停了多少时间之后，就会抛出异常
      */
     checkHeartTimeout(): void;
-    /**
-     * @description 检查等待时间 （loading 等待时间）
-     */
-    checkLoadingTimeout(): void;
     handleRender(): void;
-    clearCheckLoadingTimeout(): void;
     /**
      *
      * @param options
@@ -81,14 +88,17 @@ export default class HardPlayer extends BasePlayer {
     /**
      * @description 播放
      * @param url
-     * @param options
+     * @param {object} options
      * @returns {Promise}
      */
-    play(): Promise<unknown>;
-    _play(): Promise<void>;
+    play(options?: {
+        url?: string;
+    }): Promise<unknown>;
+    _play(options?: {
+        url?: string;
+    }): Promise<void>;
+    _flvPlayerDestroy(): void;
     _close(): Promise<unknown>;
     pause(): Promise<unknown>;
     resumeAudioAfterPause(): void;
-    mute(flag: boolean): void;
-    resize(): void;
 }

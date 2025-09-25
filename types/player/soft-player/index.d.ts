@@ -1,25 +1,36 @@
+import Audio from '../../audio';
+import type FetchLoader from '../../stream/fetchLoader';
+import DecoderWorker from '../../worker/index';
+import Demux from '../../demux';
+import NoSleep from '../../utils/noSleep';
+import BasePlayer from '../base-player';
+/**
+ * @description 软解
+ */
 export default class SoftPlayer extends BasePlayer {
-    constructor(container: any, options: any);
+    _loadingTimeoutDelayTimer: null;
     audio: Audio;
     decoderWorker: DecoderWorker;
-    stream: Stream;
+    stream: FetchLoader;
     demux: Demux;
-    _lastVolume: number;
     keepScreenOn: NoSleep;
-    set volume(value: number);
-    get volume(): number;
+    _checkLoadingTimeout: number | null;
+    _checkHeartTimeout: number | null;
+    constructor(container: Element, options: any);
     destroy(): void;
-    set fullscreen(value: any);
-    get fullscreen(): any;
-    set webFullscreen(value: any);
-    get webFullscreen(): any;
     set loaded(value: boolean);
     get loaded(): boolean;
     set playing(value: boolean);
     get playing(): boolean;
+    get muted(): any;
+    /**
+     * 静音
+     */
+    set muted(muted: any);
+    get volume(): any;
+    set volume(value: any);
     set loading(value: boolean);
     get loading(): boolean;
-    get lastVolume(): number;
     set audioTimestamp(value: number);
     get audioTimestamp(): number;
     set videoTimestamp(value: number);
@@ -29,35 +40,25 @@ export default class SoftPlayer extends BasePlayer {
      *
      * @returns {Promise<unknown>}
      */
-    init(): Promise<unknown>;
+    _init(): Promise<void>;
     /**
      *
      * @param url
      * @returns {Promise<unknown>}
      */
-    play(options: any): Promise<unknown>;
+    play(options: any): Promise<void>;
     /**
      *
      */
-    close(): Promise<any>;
+    close(): Promise<void>;
     _resumeAudioAfterPause(): void;
-    _close(): Promise<any>;
+    _close(): Promise<void>;
     /**
      *
      * @param flag {boolean} 是否清除画面
      * @returns {Promise<unknown>}
      */
-    pause(flag?: boolean): Promise<unknown>;
-    /**
-     * @description 静音
-     * @param {boolean} flag
-     */
-    mute(flag: boolean): void;
-    /**
-     * @description 重置尺寸
-     */
-    resize(): void;
-    _onlyMseOrWcsVideo(): any;
+    pause(flag?: boolean): Promise<void>;
     /**
      * 心跳检查
      */
@@ -72,20 +73,18 @@ export default class SoftPlayer extends BasePlayer {
      * @description 检查等待时间 （loading 等待时间）
      */
     checkLoadingTimeout(): void;
+    /**
+     * @description 清除加载超时
+     */
     clearCheckLoadingTimeout(): void;
     clearStatsInterval(): void;
     handleRender(): void;
-    updateStats(options: any): void;
+    updateStats(options?: any): void;
     resetStats(): void;
     enableWakeLock(): void;
     releaseWakeLock(): void;
     handlePlayToRenderTimes(): void;
     getOption(): any;
-    emitError(errorType: any, message?: string): void;
+    emitError(errorType: string, message?: string): void;
+    _enableSoundOnUserInteraction(): void;
 }
-import BasePlayer from '../base-player';
-import Audio from '../../audio';
-import DecoderWorker from '../../worker/index';
-import Stream from '../../stream';
-import Demux from '../../demux';
-import NoSleep from '../../utils/noSleep';
