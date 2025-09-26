@@ -1,6 +1,6 @@
 {
   "name": "ezuikit-flv",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "./index.js",
   "types": "./types",
   "author": "Ezviz-OpenBiz",
@@ -11,7 +11,8 @@
     "index.js",
     "package.json",
     "README.md",
-    "types"
+    "types",
+    "style.css"
   ],
   "dependencies": {
     "@ezuikit/utils-collect": "0.1.0-beta.1",
