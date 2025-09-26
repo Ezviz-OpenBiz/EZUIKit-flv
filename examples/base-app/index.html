@@ -113,7 +113,9 @@
           container: $container,
           url: $playHref.value,
           debug: true,
-          // autoPlay: false,
+          // autoPlay: true,
+          // decoder: "decoder.js", // 自定义解码库加载地址， 默认放置在服务器根目录下
+          // themeData: null // 忽略主题 @since 2.0.0
         });
 
         player.on("error", (msg) => {
