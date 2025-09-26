@@ -42,10 +42,10 @@ function Player() {
         useMSE: true, // 硬解
         autoPlay: true, // 默认自动播放
         // decoder: "decoder.js", // 软解解码资源 （wasm 要和js 在同一个文件夹中）
+        // themeData: null // 忽略主题 @since 2.0.0
       });
       // 调试api 使用
       window.player = playerRef.current;
-      // playerRef.current.play();
     }
   };
 
@@ -84,14 +84,14 @@ function Player() {
 
   const handleOpenSound = useCallback(() => {
     if (playerRef.current) {
-      playerRef.current.muted = false
-      playerRef.current.volume = 0.8
+      playerRef.current.muted = false;
+      playerRef.current.volume = 0.8;
     }
   }, []);
 
   const handleCloseSound = useCallback(() => {
     if (playerRef.current) {
-      playerRef.current.muted = true
+      playerRef.current.muted = true;
     }
   }, []);
 
