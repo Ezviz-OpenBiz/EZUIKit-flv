@@ -1,5 +1,5 @@
 import "./Player.css";
-import "ezuikit-flv/style.css";
+import "ezuikit-flv/style.css"; // 播放器样式
 import { useCallback, useEffect, useRef } from "react";
 import EzuikitFlv from "ezuikit-flv";
 
@@ -122,7 +122,7 @@ function Player() {
             style={{ width: 600 }}
             placeholder="输入播放地址"
             ref={urlRef}
-            defaultValue=""
+            defaultValue="https://rtmp11open.ys7.com:9188/v3/openlive/BC7900686_1_1.flv?expire=1760672512&id=898898538039717888&t=007458c067a2322d39b95b43ee7a1abd7132e50935bc3ea1fb5b101f5a01af2a&ev=101&supportH265=1"
           />
         </div>
         <div>

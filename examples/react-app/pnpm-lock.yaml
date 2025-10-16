@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   ezuikit-flv:
-    specifier: ^2.0.1
-    version: 2.0.1
+    specifier: ^2.0.2
+    version: 2.0.2
   react:
     specifier: ^18.2.0
     version: 18.3.1
@@ -17,9 +17,6 @@ dependencies:
   react-scripts:
     specifier: 5.0.1
     version: 5.0.1(@babel/plugin-syntax-flow@7.24.7)(@babel/plugin-transform-react-jsx@7.25.2)(eslint@8.57.0)(react@18.3.1)(typescript@5.5.4)
-  web-vitals:
-    specifier: ^2.1.4
-    version: 2.1.4
 
 packages:
 
@@ -5137,8 +5134,8 @@ packages:
       - supports-color
     dev: false
 
-  /ezuikit-flv@2.0.1:
-    resolution: {integrity: sha512-6HvNRcWmh4qyTRUsJ9OypHevrkDwmancsk7U1McUKoTGdzhpOlLiXxNbFWmYWBkK+XK5y+Egzq1/XznLSznQ6w==}
+  /ezuikit-flv@2.0.2:
+    resolution: {integrity: sha512-0nZZTou9EGdODQXY2jGIMNb86yVJO7NYoD98eRaxphhGz1KVBYNYvWjC3Kzl1D5dV0qYcdB8dnRNMb/QWFSI0Q==}
     dependencies:
       '@ezuikit/utils-collect': 0.1.0-beta.1
       '@ezuikit/utils-logger': 1.0.1
@@ -10180,10 +10177,6 @@ packages:
     resolution: {integrity: sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==}
     dependencies:
       minimalistic-assert: 1.0.1
-    dev: false
-
-  /web-vitals@2.1.4:
-    resolution: {integrity: sha512-sVWcwhU5mX6crfI5Vd2dC4qchyTqxV8URinzt25XqVh+bHEPGH4C3NPrNionCP7Obx59wrYEbNlw4Z8sjALzZg==}
     dev: false
 
   /webidl-conversions@4.0.2:

@@ -8,9 +8,11 @@ export default class CanvasVideoLoader extends CommonLoader<HTMLCanvasElement> {
     bitmaprenderer: ImageBitmapRenderingContext | null;
     renderType: string;
     _currentTime: number;
+    _pageHide: boolean;
     _contextmenuEvent: (e: any) => void;
     constructor(player: SoftPlayer);
     destroy(): void;
+    _visibilitychange(): void;
     _initContextGl(): void;
     _initContext2D(): void;
     _initCanvasRender(): void;
