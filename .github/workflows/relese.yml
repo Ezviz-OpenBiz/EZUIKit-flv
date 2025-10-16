@@ -31,12 +31,28 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+            # 获取 tag 的版本类型（仅支持 正式版和beta版）
+      - name: Determine release tag
+        id: determine_tag
+        run: |
+          TAG=$(echo "${GITHUB_REF}" | sed 's/refs\/tags\/\(.*\)/\1/')
+          if [[ "$TAG" =~ -beta ]]; then
+            echo "::set-output name=tag::beta"
+          elif [[ "$TAG" =~ -alpha ]]; then
+            echo "::set-output name=tag::alpha"
+          elif [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::set-output name=tag::latest"
+          else
+            echo "Unsupported version detected. Terminating."
+            exit 1
+          fi
       # # 打包
       # - name: Build Packages
       #   run: pnpm run build
       # 发布npm 发布前执行了prepublishOnly
       - name: Publish npm
-        run: npm publish
+        run: npm publish --tag ${{ steps.determine_tag.outputs.tag }}
         env:
           # 这里需要几个 Token 变量
           # NPM_TOKEN 需要在 npm 网站生成
