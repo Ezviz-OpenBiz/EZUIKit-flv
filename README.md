@@ -49,7 +49,6 @@ const player = new EzuikitFlv({
       id: "container-id", // support element id or element
       decoder: "decoder.js", // 自定义解码库加载地址， 默认放置在服务器根目录下
       autoPlay: true,
-      // themeData: null // 忽略主题
     });
 
     // player.play(); // 由于解码资源异步加载的问题 不推荐
