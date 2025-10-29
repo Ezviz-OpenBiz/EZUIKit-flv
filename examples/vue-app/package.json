@@ -10,7 +10,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "ezuikit-flv": "^2.0.2",
+    "ezuikit-flv": "^1.0.3-beta.4",
     "vue": "^3.3.4"
   },
   "devDependencies": {

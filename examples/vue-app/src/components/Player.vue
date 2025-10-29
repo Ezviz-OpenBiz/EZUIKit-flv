@@ -13,7 +13,6 @@ onMounted(() => {
     useMSE: false,
     autoPlay: true,
     // decoder: 'decoder.js' // 软解解码资源 （wasm 要和js 在同一个文件夹中）
-    // themeData: null // 忽略主题 @since 2.0.0
   })
 })
 </script>

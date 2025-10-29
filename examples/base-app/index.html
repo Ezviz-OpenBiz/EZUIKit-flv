@@ -47,7 +47,11 @@
       <div class="container-shell">
         <div id="container"></div>
         <div class="input">
-          <input autocomplete="on" id="playUrl" value="https://rtmp11open.ys7.com:9188/v3/openlive/BC7900686_1_1.flv?expire=1760672512&id=898898538039717888&t=007458c067a2322d39b95b43ee7a1abd7132e50935bc3ea1fb5b101f5a01af2a&ev=101&supportH265=1" />
+          <input
+            autocomplete="on"
+            id="playUrl"
+            value="https://rtmp05open.ys7.com:9188/v3/openlive/BC7799091_1_1.flv?expire=1761745135&id=903669235860828160&t=fbe3af1a7f4a88f3e626165bbf4533ea16633eaf802fc38964a7a7b46bc498bb&ev=101&supportH265=1"
+          />
           <button id="init">初始化</button>
         </div>
         <div style="display: inline-flex">
@@ -113,9 +117,9 @@
           container: $container,
           url: $playHref.value,
           debug: true,
+          // useMSE: true,
           // autoPlay: true,
           // decoder: "decoder.js", // 自定义解码库加载地址， 默认放置在服务器根目录下
-          // themeData: null // 忽略主题 @since 2.0.0
         });
 
         player.on("error", (msg) => {
