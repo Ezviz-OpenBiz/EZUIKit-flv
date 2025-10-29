@@ -169,10 +169,4 @@ declare class Services {
         startTime: string;
         stopTime: string;
     }): Promise<string>;
-    /**
-     * 查询中断信息 (仅支持萤石直播间地址)
-     * @param {string} streamId - 直播间流ID
-     * @returns
-     */
-    getStreamInterreputInfo(streamId: string): Promise<any>;
 }

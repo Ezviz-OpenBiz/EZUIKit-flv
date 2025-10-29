@@ -1,10 +1,10 @@
 export default class Debug {
+    constructor(master: any);
     master: any;
     logger: any;
-    constructor(master: any);
-    info(name: string, ...args: any[]): void;
-    log(name: string, ...args: any[]): void;
-    warn(name: string, ...args: any[]): void;
-    error(name: string, ...args: any[]): void;
-    _setLogger(): number;
+    info(name: any, ...args: any[]): void;
+    log(name: any, ...args: any[]): void;
+    warn(name: any, ...args: any[]): void;
+    error(name: any, ...args: any[]): void;
+    _setLogger(level: any): 1 | 2 | 3 | 5 | 4;
 }

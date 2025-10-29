@@ -1,25 +1,11 @@
-import Emitter from '../utils/emitter';
-import type BasePlayer from './base-player';
-interface VideoInfo {
-    width?: number;
-    height?: number;
-    encType?: string;
-    encTypeCode?: number;
-}
-export default class CommonLoader<T extends HTMLCanvasElement | HTMLVideoElement> extends Emitter {
+export default class CommonLoader extends Emitter {
     init: boolean;
-    protected _isFullScreen: boolean;
-    _orientation: any;
-    videoInfo: VideoInfo;
-    player: any;
-    $videoElement: T;
-    constructor(player: BasePlayer);
     resetInit(): void;
+    videoInfo: any;
     destroy(): void;
-    updateVideoInfo(data: VideoInfo): void;
-    _flvToMp4Codec(audioCodec: string | number): string;
+    updateVideoInfo(data: any): void;
     play(): void;
     pause(): void;
     clearView(): void;
 }
-export {};
+import Emitter from '../utils/emitter';

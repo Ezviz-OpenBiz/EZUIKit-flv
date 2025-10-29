@@ -2,16 +2,12 @@ export default EzuikitFlv;
 /**
  * @classdesc EzuikitFlv.js 播放flv直播流， 支持播放h264/h265的直播视频流
  * @example
- *
- * import "ezuikit-flv/style.css"
- * import EzuikitFlv from 'ezuikit-flv'
- *
  * const flv = new EzuikitFlv({
  *  id: "EleId",
  *  url: "https://open.ys7.com/v3/openlive/E71992743_1_1.flv"
  * })
  */
-declare class EzuikitFlv extends Theme {
+declare class EzuikitFlv extends EventEmitter<string | symbol, any> {
     /**
      * @description EzuikitFlv error events
      * @static
@@ -35,109 +31,6 @@ declare class EzuikitFlv extends Theme {
         wasmDecodeError: string;
         webglAlignmentError: string;
     };
-    static EVENTS: {
-        fullscreenChange: string;
-        orientationChange: string;
-        decoderWorkerInit: string;
-        play: string;
-        playing: string;
-        pause: string;
-        mute: string;
-        load: string;
-        loading: string;
-        loaded: string;
-        videoInfo: string;
-        timeUpdate: string;
-        timeUpdateOSD: string;
-        audioInfo: string;
-        log: string;
-        error: string;
-        kBps: string;
-        timeout: string;
-        heartTimeout: string;
-        heartRetryTimes: string;
-        delayTimeout: string;
-        loadingTimeout: string;
-        loadingRetryTimes: string;
-        stats: string;
-        performance: string;
-        buffer: string;
-        videoFrame: string;
-        start: string;
-        metadata: string;
-        resize: string;
-        streamEnd: string;
-        streamSuccess: string;
-        streamMessage: string;
-        streamError: string;
-        volumechange: string;
-        audioCodecUnsupported: string;
-        unrecoverableEarlyEof: string;
-        destroy: string;
-        mseSourceOpen: string;
-        mseSourceClose: string;
-        mseSourceBufferError: string;
-        mseSourceBufferBusy: string;
-        mseSourceBufferFull: string;
-        videoWaiting: string;
-        videoTimeUpdate: string;
-        videoSyncAudio: string;
-        playToRenderTimes: string;
-        localVideoRecords: string;
-        getDefinitionListResult: string;
-        definitionChange: string;
-        definitionListChange: string;
-        playbackRateListChange: string;
-        playbackRateChange: string;
-        decoderLoaded: string;
-        end: string;
-    } & {
-        loading: string;
-        play: string;
-        capturePicture: string;
-        volumechange: string;
-        audioInfo: string;
-        videoInfo: string;
-        fullscreen: string;
-        exitFullscreen: string;
-        fullscreenChange: string;
-        resize: string;
-        orientationChange: string;
-        audioCodecUnsupported: string;
-        changeTheme: string;
-        changeRecType: string;
-        changeDefinition: string;
-        changeSpeed: string;
-        control: {
-            play: string; /**
-             * @description 初始化播放
-             * @private
-             * @param {string | HTMLElement} $container
-             * @param {FlvOptions} options
-             * @return {void}
-             */
-            capturePicture: string;
-            volumechange: string;
-            volumePanelOpenChange: string;
-            controlsBarOpenChange: string;
-            headerMoreShow: string;
-            footerMoreShow: string;
-            beforeMountControls: string;
-            mountedControls: string;
-            beforeUnmountControls: string;
-            unmountedControls: string;
-            changeRecType: string;
-            changeDefinition: string;
-            definitionPanelOpenChange: string;
-            changeSpeed: string;
-            speedPanelOpenChange: string;
-        };
-        theme: {
-            beforeDestroy: string;
-            destroyed: string;
-        };
-        message: string;
-    };
     static QUALITY_ENUM: {
         0: string;
         1: string;
@@ -159,11 +52,7 @@ declare class EzuikitFlv extends Theme {
      * @returns {FlvOptions}
      */
     private static _setOptions;
-    /**
-     * 版本号 EzuikitFlv.version
-     * @example
-     * EzuikitFlv.version
-     */
+    /** 版本号 EzuikitFlv.version */
     static version: string;
     /**
      * @description 静态方法 判断是否支持播放地址
@@ -185,15 +74,14 @@ declare class EzuikitFlv extends Theme {
      * @param {FlvOptions} options
      */
     constructor(options: FlvOptions);
+    event: EventEmitter<string | symbol, any>;
     urlInfo: {};
     /** @type {Services} */
     services: Services;
     /** @private */
     private _loadingTimeoutDelayTimer;
-    _heartTimeoutDelayTimer: any;
     _opt: any;
     $container: any;
-    _heartTimeoutDelayTimes: number;
     _loadingTimeoutReplayTimes: number;
     events: Events;
     _videoInfo: {};
@@ -206,7 +94,6 @@ declare class EzuikitFlv extends Theme {
     private _playbackRate;
     playbackRateList: number[];
     playbackRecords: any[];
-    _onvisibilitychange(): void;
     /**
      * https 接口调用 仅针对萤石设备
      * @since @1.0.3
@@ -265,6 +152,16 @@ declare class EzuikitFlv extends Theme {
      * @returns {boolean}
      */
     private _isEzvizPlayback;
+    /**
+     * 当前是否在播放中
+     */
+    get playing(): any;
+    /**
+     * @description 销毁
+     * @example
+     * flv.destroy()
+     */
+    destroy(): void;
     player: Player;
     /**
      * @private
@@ -294,9 +191,8 @@ declare class EzuikitFlv extends Theme {
      * @description 是否开启控制台调试打印
      * @param {boolean} value true: 开启， false: 关闭
      * @returns {void}
-     * @deprecated 推荐 player.setLogger({level: "WARN"})， 后面版本会移除
      * @example
-     * player.setDebug(false)
+     * flv.setDebug(false)
      */
     setDebug(value: boolean): void;
     /**
@@ -306,45 +202,51 @@ declare class EzuikitFlv extends Theme {
      */
     setLogger(opt?: {}): void;
     /**
-     * @description 关闭声音（非静音）
+     * @description 关闭声音
      * @returns {void}
-     * @deprecated 推荐 player.volume = 0， 后面版本会移除
      * @example
-     * player.closeSound()
+     * flv.closeSound()
      */
     closeSound(): void;
     /**
-     * @description 开启声音 默认音量 0.8,
+     * @description 开启声音 默认音量 0.5
      * @returns {void}
-     * @deprecated 推荐 player.volume = 0.8， 后面版本会移除
      * @example
-     * player.openSound() //
+     * flv.openSound() //
      */
     openSound(): void;
     /**
      * @description 设置音量
      * @param {number} value 音量 0～1
      * @returns {void}
-     * @deprecated 后面版本会移除, 推荐 player.volume = 0.8,
      * @example
-     * player.setVolume(0.8)
+     * flv.setVolume(0.5)
      */
     setVolume(value: number): void;
+    set volume(value: any);
+    get volume(): any;
     /**
      * @description 获取音量， 音量 0～1
      * @returns {number}
-     * @deprecated 后面版本会移除, 推荐 player.volume
      * @example
-     * player.getVolume()
+     * flv.getVolume()
      */
     getVolume(): number;
     /**
      * @description 音频恢复
      * @returns {void}
      * @example
-     * player.audioResume()
+     * flv.audioResume()
      */
     audioResume(): void;
+    /**
+     * @description 设置超时时长, 单位秒 在连接成功之前和播放中途,如果超过设定时长无数据返回,则回调timeout事件
+     * @private
+     * @param {number} time 设置超时时长, 单位秒
+     * @returns {void}
+     * @example
+     * flv.setTimeout(3)
+     */
     /**
      * @description 设置渲染的模式 (video 不支持)
      * @private
@@ -397,10 +299,6 @@ declare class EzuikitFlv extends Theme {
     /**
      * @private
      */
-    private _onHeartTimeout;
-    /**
-     * @private
-     */
     private _onLoadingTimeout;
     /**
      * @private
@@ -411,10 +309,14 @@ declare class EzuikitFlv extends Theme {
      */
     private _onStreamError;
     /**
-     * 获取萤石直播间播放失败的原因
-     * @private
+     * @description 重新调整视图大小
+     * @param {number=} width  宽
+     * @param {number=} height  高
+     * @example
+     *
+     * flv.resize()
      */
-    private _getDeviceStreamErrorInfo;
+    resize(width?: number | undefined, height?: number | undefined): void;
     /**
      * @description 设置最大缓冲时长，单位秒，播放器会自动消除延迟。软解
      * @private
@@ -427,7 +329,6 @@ declare class EzuikitFlv extends Theme {
      * @description 设置旋转角度，支持，0(默认), 90, 180, 270 四个值。
      * @param {number} deg 旋转角度取值 EzuikitFlv.ROTATE
      * @returns {Promise}
-     * @deprecated 不在使用
      * @example
      * flv.setRotate(90) // 旋转90度
      */
@@ -446,6 +347,17 @@ declare class EzuikitFlv extends Theme {
      */
     setKeepScreenOn(): void;
     /**
+     * @description 全屏(取消全屏)播放视频
+     * @private
+     * @param {Boolean} flag
+     */
+    private _setFullscreen;
+    /**
+     * 当前容器全屏中
+     * @returns {boolean}
+     */
+    get fullscreening(): boolean;
+    /**
      * 当前视频的信息, 推荐使用监听 videoInfo 事件
      * @returns {Object}
      */
@@ -456,7 +368,37 @@ declare class EzuikitFlv extends Theme {
      */
     get currentTime(): number;
     /**
-     * @description 截图，调用后弹出下载框保存截图, (硬解下 Mac Safari 部分截图结果是黑色的)
+     * @description 全屏播放视频(不支持移动端)
+     * @returns {Promise}
+     * @deprecated
+     * @example
+     * flv.fullScreen() // 全屏
+     */
+    fullScreen(): Promise<any>;
+    /**
+     * @description 全屏播放视频(不支持移动端)
+     * @returns {Promise}
+     * @example
+     * flv.fullscreen() // 全屏
+     */
+    fullscreen(): Promise<any>;
+    /**
+     * @description 退出全屏播放视频
+     * @returns {Promise}
+     * @deprecated
+     * @example
+     * flv.cancelFullScreen() // 退出全屏
+     */
+    cancelFullScreen(): Promise<any>;
+    /**
+     * @description 取消全屏播放视频
+     * @returns {Promise}
+     * @example
+     * flv.exitFullscreen() // 退出全屏
+     */
+    exitFullscreen(): Promise<any>;
+    /**
+     * @description 截图，调用后弹出下载框保存截图
      * @param {string=} filename 保存的文件名, 默认 时间戳
      * @param {string=} format 截图的格式，可选png或jpeg或者webp ,默认 png
      * @param {number=} quality 当格式是jpeg或者webp时，压缩质量，取值0 ~ 1 ,默认 0.92
@@ -465,15 +407,15 @@ declare class EzuikitFlv extends Theme {
      * @returns {string | Blob | undefined}   undefined 代表截图失败
      * @since 1.0.3
      * @example
-     * player.screenshot()
-     * player.screenshot("filename", "jpeg", 0.7, "download")
+     * flv.screenshot()
+     * flv.screenshot("filename", "jpeg", 0.7, "download")
      */
     screenshot(filename?: string | undefined, format?: string | undefined, quality?: number | undefined, type?: ("download" | "base64" | "blob")): string | Blob | undefined;
     /**
      * @description 获取播放器的状态
      * @returns {PlayerState} 播放器的状态
      * @example
-     * player.getState()
+     * flv.getState()
      */
     getState(): PlayerState;
     /**
@@ -493,7 +435,7 @@ declare class EzuikitFlv extends Theme {
      */
     getVersion(): string;
 }
-import Theme from '@ezviz/player-theme';
+import EventEmitter from 'eventemitter3';
 import Services from './services';
 import Events from './utils/events';
 import Player from './player';

@@ -1,5 +1,4 @@
 import Debug from '../utils/debug';
-import { type IThemeData } from '@ezviz/player-theme';
 export type TFlvOptions = {
     container: string | HTMLElement;
     videoBuffer: number;
@@ -13,22 +12,15 @@ export type TFlvOptions = {
     loadingTimeoutDelay: number;
     loadingTimeoutReplayTimes: number;
     keepScreenOn: boolean;
-    muted: boolean;
+    isMute: boolean;
     useMSE: boolean;
+    autoWasm: boolean;
     wasmDecodeErrorReplay: boolean;
+    useWebFullScreen: boolean;
     width: number;
     height: number;
     isLive: boolean;
-    autoPlay: boolean;
-    heartTimeout?: number;
-    /**
-     * 控件配置项， 仅支持 play sound webExpend expend
-     *
-     * 当设置为 null  不展示控件
-     * {@link https://github.com/Ezviz-OpenBiz/EZUIKit-JavaScript-npm/blob/master/themeData.md}
-     *
-     */
-    themeData?: IThemeData;
+    referrerPolicy?: string;
 };
 export type RequiredFlvOptions = Required<TFlvOptions> & {
     url: string;
@@ -82,6 +74,11 @@ export interface PlayerInterface {
      * @description 暂停
      */
     pause(flag?: boolean): Promise<unknown>;
+    /**
+     * @description 静音
+     * @param flag
+     */
+    mute(flag?: boolean): void;
     /**
      * @description resize
      */

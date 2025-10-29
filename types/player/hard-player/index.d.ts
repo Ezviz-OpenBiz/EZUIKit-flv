@@ -13,13 +13,14 @@ export default class HardPlayer extends BasePlayer {
     video: Video;
     events: Events;
     _playing: boolean;
+    _lastVolume: number;
     _loading: any;
     _audioTimestamp: number;
     _videoTimestamp: number;
     _times: any;
     $container: HTMLElement;
     _opt: RequiredFlvOptions;
-    _checkHeartTimeout: number | null;
+    _checkHeartTimeout: number;
     _stats: any;
     control: Control;
     width: number;
@@ -51,10 +52,9 @@ export default class HardPlayer extends BasePlayer {
     get loaded(): boolean;
     set playing(value: boolean);
     get playing(): boolean;
-    get muted(): boolean;
-    set muted(muted: boolean);
     get volume(): number;
     set volume(value: number);
+    get lastVolume(): number;
     set loading(value: any);
     get loading(): any;
     set audioTimestamp(value: number);
@@ -101,4 +101,5 @@ export default class HardPlayer extends BasePlayer {
     _close(): Promise<unknown>;
     pause(): Promise<unknown>;
     resumeAudioAfterPause(): void;
+    mute(flag: boolean): void;
 }

@@ -1,29 +1,12 @@
-## v2.0.2 （2025-10-16）
-
-### Fixed
-
-- 修复软解在浏览器窗口隐藏后内存泄漏问题
-
-## v2.0.1（2025-09-25）
-
-### Fixed
-
-- 修复缺失的依赖项文件
-
-## v2.0.0
-
-### Feat
-
-- 新增主题 UI
-- 新的全屏 api `fullscreen` 和退出全屏 `exitFullscreen`
-- `openSound` 和 `closeSound` 不再推荐， 使用`player.current.volume = 0.8` 和 `player.current.muted = true` 代替
-
 ## v1.0.3
 
 ### Fixed
 
 - 修复全屏冲突
-- 支持截图
+
+- 修复实时追帧导致 MSE 异常
+
+- 修复软解在浏览器窗口隐藏后内存泄漏问题
 
 ## v1.0.2 （2024-07-15）
 
@@ -45,6 +28,6 @@
 
 - 支持 flv h264/h265 编码的流播放
 
-- 支持 音频 ACC 播放
+- 支持 音频ACC 播放
 
 - 支持 2k 分辨率

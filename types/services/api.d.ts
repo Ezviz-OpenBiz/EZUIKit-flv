@@ -6,5 +6,4 @@ declare namespace API {
     let getAddress: string;
     let getCDNLiveAddress: string;
     let getCDNRecordAddress: string;
-    let getStreamInterreputInfo: string;
 }
