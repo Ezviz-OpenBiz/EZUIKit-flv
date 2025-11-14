@@ -81,4 +81,6 @@ const player = new EzuikitFlv({
 
 [react-app](https://github.com/Ezviz-OpenBiz/EZUIKit-flv/tree/master/examples/react-app)
 
-[vue-app](https://github.com/Ezviz-OpenBiz/EZUIKit-flv/tree/master/examples/vue-app)
+[vue3.3-app](https://github.com/Ezviz-OpenBiz/EZUIKit-flv/tree/master/examples/vue3.3-app)
+
+[vue2.5-app](https://github.com/Ezviz-OpenBiz/EZUIKit-flv/tree/master/examples/vue2.5-app)
