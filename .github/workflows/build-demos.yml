@@ -30,7 +30,7 @@ jobs:
           pnpm install
           pnpm run build
 
-      - name: Build vue-demo
+      - name: Build vue3.3-demo
         working-directory: ./examples/vue-app
         run: |
           pnpm install
