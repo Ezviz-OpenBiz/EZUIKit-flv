@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   ezuikit-flv:
-    specifier: ^2.0.2
-    version: 2.0.2
+    specifier: ^2.0.3
+    version: 2.0.3
   react:
     specifier: ^18.2.0
     version: 18.3.1
@@ -1766,14 +1766,6 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: false
 
-  /@ezuikit/utils-collect@0.1.0-beta.1:
-    resolution: {integrity: sha512-+kkEkOVM9bQkWp90ppFpEwuaG8sRCH/F3CamLLgS0CG18gk1Fb5lcvS21hklgxMjS5tLotjwlfs0j+pQydzRYA==}
-    dev: false
-
-  /@ezuikit/utils-logger@1.0.1:
-    resolution: {integrity: sha512-qak0MXh4vWZCji3aSCfHdWR3EbZCaqS0iMT8/QWuWPRr0vDmTRMP3kFOAw1MuMraR0ocjPBE2PaTEmUuwVqaAw==}
-    dev: false
-
   /@humanwhocodes/config-array@0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
@@ -3515,10 +3507,6 @@ packages:
     resolution: {integrity: sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow==}
     dev: false
 
-  /browser-tool@1.0.5:
-    resolution: {integrity: sha512-iuBYclNsu9LI5CeV7AEh9/PGyCUAsjs51oIlfAAg/BvOIeVx9uizgzIFA+COEyPJhgbciIHhQqpUL0ib1tGRVg==}
-    dev: false
-
   /browserslist@4.23.2:
     resolution: {integrity: sha512-qkqSyistMYdxAcw+CzbZwlBy8AGmS/eEWs+sEV5TnLRGDOL+C5M2EnH6tlZyg0YoAxGJAFKh61En9BR941GnHA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
@@ -5056,10 +5044,6 @@ packages:
     resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
     dev: false
 
-  /eventemitter3@5.0.1:
-    resolution: {integrity: sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==}
-    dev: false
-
   /events@3.3.0:
     resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
     engines: {node: '>=0.8.x'}
@@ -5134,17 +5118,8 @@ packages:
       - supports-color
     dev: false
 
-  /ezuikit-flv@2.0.2:
-    resolution: {integrity: sha512-0nZZTou9EGdODQXY2jGIMNb86yVJO7NYoD98eRaxphhGz1KVBYNYvWjC3Kzl1D5dV0qYcdB8dnRNMb/QWFSI0Q==}
-    dependencies:
-      '@ezuikit/utils-collect': 0.1.0-beta.1
-      '@ezuikit/utils-logger': 1.0.1
-      browser-tool: 1.0.5
-      deepmerge: 4.3.1
-      eventemitter3: 5.0.1
-      js-md5: 0.8.3
-      recordrtc: 5.6.2
-      screenfull: 5.1.0
+  /ezuikit-flv@2.0.3:
+    resolution: {integrity: sha512-icGKFAWiG4+iTus+7Qa08TtHSzqS8dEu9n501+wrLQsY61Yrqka5p+rPD6bvsepyHihVRaeOS5z4wmx2pIoAww==}
     dev: false
 
   /fast-deep-equal@3.1.3:
@@ -6776,10 +6751,6 @@ packages:
   /jiti@1.21.6:
     resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
     hasBin: true
-    dev: false
-
-  /js-md5@0.8.3:
-    resolution: {integrity: sha512-qR0HB5uP6wCuRMrWPTrkMaev7MJZwJuuw4fnwAzRgP4J4/F8RwtodOKpGp4XpqsLBFzzgqIO42efFAyz2Et6KQ==}
     dev: false
 
   /js-tokens@4.0.0:
@@ -8809,10 +8780,6 @@ packages:
       picomatch: 2.3.1
     dev: false
 
-  /recordrtc@5.6.2:
-    resolution: {integrity: sha512-1QNKKNtl7+KcwD1lyOgP3ZlbiJ1d0HtXnypUy7yq49xEERxk31PHvE9RCciDrulPCY7WJ+oz0R9hpNxgsIurGQ==}
-    dev: false
-
   /recursive-readdir@2.2.3:
     resolution: {integrity: sha512-8HrF5ZsXk5FAH9dgsx3BlUer73nIhuj+9OrQwEbLTPOBzGkL1lsFCR01am+v+0m2Cmbs1nP12hLDl5FA7EszKA==}
     engines: {node: '>=6.0.0'}
@@ -9135,11 +9102,6 @@ packages:
       ajv: 8.17.1
       ajv-formats: 2.1.1(ajv@8.17.1)
       ajv-keywords: 5.1.0(ajv@8.17.1)
-    dev: false
-
-  /screenfull@5.1.0:
-    resolution: {integrity: sha512-dYaNuOdzr+kc6J6CFcBrzkLCfyGcMg+gWkJ8us93IQ7y1cevhQAugFsaCdMHb6lw8KV3xPzSxzH7zM1dQap9mA==}
-    engines: {node: '>=0.10.0'}
     dev: false
 
   /select-hose@2.0.0:
