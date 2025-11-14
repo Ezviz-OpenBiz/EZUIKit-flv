@@ -2,33 +2,6 @@
 # yarn lockfile v1
 
 
-"@ezuikit/player-base@0.1.0-alpha.1":
-  version "0.1.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@ezuikit/player-base/-/player-base-0.1.0-alpha.1.tgz#f0e4da43f02de4a23ce35f69edb698904722861f"
-  integrity sha512-68O3PtB5g7hm+HSpCqE/ef/Ud0xUPsFv3ckrj6VKm7wyed+9aqTazxv8mDPOXuNStZZULpfn+7Uf0KW7cHAyxg==
-  dependencies:
-    "@ezuikit/utils-logger" "^1.0.1"
-    "@ezuikit/utils-tools" "^1.0.2"
-    eventemitter3 "^5.0.1"
-    lodash-es "^4.17.21"
-    screenfull "^6.0.2"
-    ua-parser-js "1.0.37"
-
-"@ezuikit/utils-collect@0.1.0-beta.1":
-  version "0.1.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@ezuikit/utils-collect/-/utils-collect-0.1.0-beta.1.tgz#dcb99ed3e1dbb4150cdd732b94588703541b6c95"
-  integrity sha512-+kkEkOVM9bQkWp90ppFpEwuaG8sRCH/F3CamLLgS0CG18gk1Fb5lcvS21hklgxMjS5tLotjwlfs0j+pQydzRYA==
-
-"@ezuikit/utils-logger@1.0.1", "@ezuikit/utils-logger@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@ezuikit/utils-logger/-/utils-logger-1.0.1.tgz#9f157c982acba73514fc7a46829768d5bf61f45e"
-  integrity sha512-qak0MXh4vWZCji3aSCfHdWR3EbZCaqS0iMT8/QWuWPRr0vDmTRMP3kFOAw1MuMraR0ocjPBE2PaTEmUuwVqaAw==
-
-"@ezuikit/utils-tools@^1.0.2":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@ezuikit/utils-tools/-/utils-tools-1.0.3.tgz#d014c32905aae1dcfd92d5258453765fb7ffaa41"
-  integrity sha512-4vJOFAAmmIojfCf43LwXwQNffoyUad2c/HOZwNexHsMqcvC/yLeDmqm5Y5Kp4BoZT/LHfMpy9fJJ3W22+ikXaQ==
-
 ansi-styles@^4.1.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-4.3.0.tgz#edd803628ae71c04c85ae7a0906edad34b648937"
@@ -49,11 +22,6 @@ basic-auth@^2.0.1:
   integrity sha512-NF+epuEdnUYVlGuhaxbbq+dvJttwLnGY+YixlXlME5KpQ5W3CnXA5cVTneY3SPbPDRkcjMbifrwmFYcClgOZeg==
   dependencies:
     safe-buffer "5.1.2"
-
-browser-tool@^1.0.5:
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/browser-tool/-/browser-tool-1.2.8.tgz#25b0108d3b9e377971e9d3e53fa3f941fdd8ba37"
-  integrity sha512-EziAkvk8BXOhy0FgkW4K9DHjvQGXm8fOC5UqJiFOYriNDOLmDHC52Gwo+s9UXeszvYNPY7yr6z5EOPKgrxnnrA==
 
 call-bind@^1.0.0:
   version "1.0.2"
@@ -100,23 +68,10 @@ eventemitter3@^4.0.0:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
   integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
 
-eventemitter3@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-5.0.1.tgz#53f5ffd0a492ac800721bb42c66b841de96423c4"
-  integrity sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==
-
-ezuikit-flv@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/ezuikit-flv/-/ezuikit-flv-1.0.2.tgz#f83148fe7e221ca7dbc5324b2796b8111a3e07b6"
-  integrity sha512-doB2GXby4h52tKBa1+X4nmNIlP4nSHBLpJu8bWP4ZU6nbeJSx/A52FnZRz0CeK7fsxbpro+Tk3cpTBb/y+VOTQ==
-  dependencies:
-    "@ezuikit/player-base" "0.1.0-alpha.1"
-    "@ezuikit/utils-collect" "0.1.0-beta.1"
-    "@ezuikit/utils-logger" "1.0.1"
-    browser-tool "^1.0.5"
-    eventemitter3 "^5.0.1"
-    recordrtc "5.6.2"
-    screenfull "5.1.0"
+ezuikit-flv@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/ezuikit-flv/-/ezuikit-flv-2.0.3.tgz#5a59b386310c8b0e2dc4545197b19135b10b0e33"
+  integrity sha512-icGKFAWiG4+iTus+7Qa08TtHSzqS8dEu9n501+wrLQsY61Yrqka5p+rPD6bvsepyHihVRaeOS5z4wmx2pIoAww==
 
 follow-redirects@^1.0.0:
   version "1.15.2"
@@ -207,11 +162,6 @@ iconv-lite@0.6.3:
   dependencies:
     safer-buffer ">= 2.1.2 < 3.0.0"
 
-lodash-es@^4.17.21:
-  version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
-  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
-
 lodash@^4.17.14:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
@@ -265,11 +215,6 @@ qs@^6.4.0:
   dependencies:
     side-channel "^1.0.4"
 
-recordrtc@5.6.2:
-  version "5.6.2"
-  resolved "https://registry.yarnpkg.com/recordrtc/-/recordrtc-5.6.2.tgz#48fc214b35084973ccce82c6251198b5742bc327"
-  integrity sha512-1QNKKNtl7+KcwD1lyOgP3ZlbiJ1d0HtXnypUy7yq49xEERxk31PHvE9RCciDrulPCY7WJ+oz0R9hpNxgsIurGQ==
-
 requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
@@ -284,16 +229,6 @@ safe-buffer@5.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
-
-screenfull@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/screenfull/-/screenfull-5.1.0.tgz#85c13c70f4ead4c1b8a935c70010dfdcd2c0e5c8"
-  integrity sha512-dYaNuOdzr+kc6J6CFcBrzkLCfyGcMg+gWkJ8us93IQ7y1cevhQAugFsaCdMHb6lw8KV3xPzSxzH7zM1dQap9mA==
-
-screenfull@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/screenfull/-/screenfull-6.0.2.tgz#3dbe4b8c4f8f49fb8e33caa8f69d0bca730ab238"
-  integrity sha512-AQdy8s4WhNvUZ6P8F6PB21tSPIYKniic+Ogx0AacBMjKP1GUHN2E9URxQHtCusiwxudnCKkdy4GrHXPPJSkCCw==
 
 secure-compare@3.0.1:
   version "3.0.1"
@@ -315,11 +250,6 @@ supports-color@^7.1.0:
   integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
   dependencies:
     has-flag "^4.0.0"
-
-ua-parser-js@1.0.37:
-  version "1.0.37"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-1.0.37.tgz#b5dc7b163a5c1f0c510b08446aed4da92c46373f"
-  integrity sha512-bhTyI94tZofjo+Dn8SN6Zv8nBDvyXTymAdM3LDI/0IboIUwTu1rEhW7v2TfiVsoYWgkQ4kOVqnI8APUFbIQIFQ==
 
 union@~0.5.0:
   version "0.5.0"

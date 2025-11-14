@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   ezuikit-flv:
-    specifier: ^2.0.2
-    version: 2.0.2
+    specifier: ^2.0.3
+    version: 2.0.3
   vue:
     specifier: ^3.3.4
     version: 3.4.35
@@ -295,14 +295,6 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@ezuikit/utils-collect@0.1.0-beta.1:
-    resolution: {integrity: sha512-+kkEkOVM9bQkWp90ppFpEwuaG8sRCH/F3CamLLgS0CG18gk1Fb5lcvS21hklgxMjS5tLotjwlfs0j+pQydzRYA==}
-    dev: false
-
-  /@ezuikit/utils-logger@1.0.1:
-    resolution: {integrity: sha512-qak0MXh4vWZCji3aSCfHdWR3EbZCaqS0iMT8/QWuWPRr0vDmTRMP3kFOAw1MuMraR0ocjPBE2PaTEmUuwVqaAw==}
-    dev: false
-
   /@humanwhocodes/config-array@0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
@@ -506,10 +498,6 @@ packages:
       concat-map: 0.0.1
     dev: true
 
-  /browser-tool@1.0.5:
-    resolution: {integrity: sha512-iuBYclNsu9LI5CeV7AEh9/PGyCUAsjs51oIlfAAg/BvOIeVx9uizgzIFA+COEyPJhgbciIHhQqpUL0ib1tGRVg==}
-    dev: false
-
   /callsites@3.1.0:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
@@ -571,11 +559,6 @@ packages:
   /deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
     dev: true
-
-  /deepmerge@4.3.1:
-    resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
-    engines: {node: '>=0.10.0'}
-    dev: false
 
   /doctrine@3.0.0:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
@@ -768,21 +751,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /eventemitter3@5.0.1:
-    resolution: {integrity: sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==}
-    dev: false
-
-  /ezuikit-flv@2.0.2:
-    resolution: {integrity: sha512-0nZZTou9EGdODQXY2jGIMNb86yVJO7NYoD98eRaxphhGz1KVBYNYvWjC3Kzl1D5dV0qYcdB8dnRNMb/QWFSI0Q==}
-    dependencies:
-      '@ezuikit/utils-collect': 0.1.0-beta.1
-      '@ezuikit/utils-logger': 1.0.1
-      browser-tool: 1.0.5
-      deepmerge: 4.3.1
-      eventemitter3: 5.0.1
-      js-md5: 0.8.3
-      recordrtc: 5.6.2
-      screenfull: 5.1.0
+  /ezuikit-flv@2.0.3:
+    resolution: {integrity: sha512-icGKFAWiG4+iTus+7Qa08TtHSzqS8dEu9n501+wrLQsY61Yrqka5p+rPD6bvsepyHihVRaeOS5z4wmx2pIoAww==}
     dev: false
 
   /fast-deep-equal@3.1.3:
@@ -932,10 +902,6 @@ packages:
   /isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
-
-  /js-md5@0.8.3:
-    resolution: {integrity: sha512-qR0HB5uP6wCuRMrWPTrkMaev7MJZwJuuw4fnwAzRgP4J4/F8RwtodOKpGp4XpqsLBFzzgqIO42efFAyz2Et6KQ==}
-    dev: false
 
   /js-yaml@4.1.0:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
@@ -1115,10 +1081,6 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
-  /recordrtc@5.6.2:
-    resolution: {integrity: sha512-1QNKKNtl7+KcwD1lyOgP3ZlbiJ1d0HtXnypUy7yq49xEERxk31PHvE9RCciDrulPCY7WJ+oz0R9hpNxgsIurGQ==}
-    dev: false
-
   /resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
     engines: {node: '>=4'}
@@ -1150,11 +1112,6 @@ packages:
     dependencies:
       queue-microtask: 1.2.3
     dev: true
-
-  /screenfull@5.1.0:
-    resolution: {integrity: sha512-dYaNuOdzr+kc6J6CFcBrzkLCfyGcMg+gWkJ8us93IQ7y1cevhQAugFsaCdMHb6lw8KV3xPzSxzH7zM1dQap9mA==}
-    engines: {node: '>=0.10.0'}
-    dev: false
 
   /semver@7.6.3:
     resolution: {integrity: sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==}
