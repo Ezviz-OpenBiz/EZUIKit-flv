@@ -9,6 +9,6 @@
     "http-server": "^14.1.1"
   },
   "dependencies": {
-    "ezuikit-flv": "^1.0.1"
+    "ezuikit-flv": "^2.0.3"
   }
 }
