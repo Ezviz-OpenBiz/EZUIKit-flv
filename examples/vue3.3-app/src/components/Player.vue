@@ -9,7 +9,7 @@ onMounted(() => {
   player = new EzuikitFlv({
     container: document.getElementById('container'),
     debug: true,
-    url: 'https://rtmp11open.ys7.com:9188/v3/openlive/BC7900686_1_1.flv?expire=1760672512&id=898898538039717888&t=007458c067a2322d39b95b43ee7a1abd7132e50935bc3ea1fb5b101f5a01af2a&ev=101&supportH265=1',
+    url: 'https://rtmp05open.ys7.com:9188/v3/openlive/GG6358043_1_1.flv?expire=1763125058&id=909532552559247360&t=6dfd150f733f58117b29f99817ffb3a7aec648d1cf6fa611ca8c5fb87041656e&ev=101&supportH265=1',
     useMSE: false,
     autoPlay: true,
     // decoder: 'decoder.js' // 软解解码资源 （wasm 要和js 在同一个文件夹中）
