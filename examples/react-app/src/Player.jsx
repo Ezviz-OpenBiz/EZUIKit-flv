@@ -1,7 +1,8 @@
 import "./Player.css";
 import "ezuikit-flv/style.css"; // 播放器样式
-import { useCallback, useEffect, useRef } from "react";
 import EzuikitFlv from "ezuikit-flv";
+import { useCallback, useEffect, useRef } from "react";
+
 
 function Player() {
   const playerRef = useRef();
@@ -36,16 +37,16 @@ function Player() {
     const url = urlRef.current.value;
     if (!playerRef.current) {
       playerRef.current = new EzuikitFlv({
+        // 播放器挂载节点
         container: containerRef.current,
-        debug: true,
-        url,
+        // debug: true,
+        // flv 播放地址， https://open.ys7.com/console/device.html
+        url: "https://rtmp05open.ys7.com:9188/v3/openlive/BC7799091_1_1.flv?expire=1763681273&id=911699389814775808&t=f21770fc99afbc0e5571f31c6a9b7ed638abee710b5dc6c61a6b20ab1bc507ab&ev=101&supportH265=1",
         useMSE: true, // 硬解
         autoPlay: true, // 默认自动播放
         // decoder: "decoder.js", // 软解解码资源 （wasm 要和js 在同一个文件夹中）
         // themeData: null // 忽略主题 @since 2.0.0
       });
-      // 调试api 使用
-      window.player = playerRef.current;
     }
   };
 
@@ -122,7 +123,7 @@ function Player() {
             style={{ width: 600 }}
             placeholder="输入播放地址"
             ref={urlRef}
-            defaultValue="https://rtmp11open.ys7.com:9188/v3/openlive/BC7900686_1_1.flv?expire=1760672512&id=898898538039717888&t=007458c067a2322d39b95b43ee7a1abd7132e50935bc3ea1fb5b101f5a01af2a&ev=101&supportH265=1"
+            defaultValue="https://rtmp05open.ys7.com:9188/v3/openlive/BC7799091_1_1.flv?expire=1763680865&id=911697680651005952&t=d3cda94b473e1bcb19ba5f68a21efe1f9a92ab1de7e98f2ca285cc1088fcb816&ev=101&supportH265=1"
           />
         </div>
         <div>
