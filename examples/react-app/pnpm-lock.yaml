@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   ezuikit-flv:
-    specifier: ^2.0.2
-    version: 2.0.2
+    specifier: ^1.0.3-beta.6
+    version: 1.0.3-beta.6
   react:
     specifier: ^18.2.0
     version: 18.3.1
@@ -1766,12 +1766,27 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: false
 
+  /@ezuikit/player-base@0.1.0-alpha.1:
+    resolution: {integrity: sha512-68O3PtB5g7hm+HSpCqE/ef/Ud0xUPsFv3ckrj6VKm7wyed+9aqTazxv8mDPOXuNStZZULpfn+7Uf0KW7cHAyxg==}
+    dependencies:
+      '@ezuikit/utils-logger': 1.0.1
+      '@ezuikit/utils-tools': 1.1.0
+      eventemitter3: 5.0.1
+      lodash-es: 4.17.22
+      screenfull: 6.0.2
+      ua-parser-js: 1.0.37
+    dev: false
+
   /@ezuikit/utils-collect@0.1.0-beta.1:
     resolution: {integrity: sha512-+kkEkOVM9bQkWp90ppFpEwuaG8sRCH/F3CamLLgS0CG18gk1Fb5lcvS21hklgxMjS5tLotjwlfs0j+pQydzRYA==}
     dev: false
 
   /@ezuikit/utils-logger@1.0.1:
     resolution: {integrity: sha512-qak0MXh4vWZCji3aSCfHdWR3EbZCaqS0iMT8/QWuWPRr0vDmTRMP3kFOAw1MuMraR0ocjPBE2PaTEmUuwVqaAw==}
+    dev: false
+
+  /@ezuikit/utils-tools@1.1.0:
+    resolution: {integrity: sha512-mujPtXIhZnuJrJySu1/Z6X90sMJQStZydurZcfetMCH6pqIYN4P+1w6+P8PCTR6k4LJp5nY9+eNnKa7AZ8OBKA==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.14:
@@ -5134,13 +5149,13 @@ packages:
       - supports-color
     dev: false
 
-  /ezuikit-flv@2.0.2:
-    resolution: {integrity: sha512-0nZZTou9EGdODQXY2jGIMNb86yVJO7NYoD98eRaxphhGz1KVBYNYvWjC3Kzl1D5dV0qYcdB8dnRNMb/QWFSI0Q==}
+  /ezuikit-flv@1.0.3-beta.6:
+    resolution: {integrity: sha512-A+VHtld+5Rer5n/i6uKM0MmFMp5DveyGf7pR4rDYZE+NPxhKwXm3vRL5Ztjc2/2CBpofhKnyTzlpkgevvaTMhQ==}
     dependencies:
+      '@ezuikit/player-base': 0.1.0-alpha.1
       '@ezuikit/utils-collect': 0.1.0-beta.1
       '@ezuikit/utils-logger': 1.0.1
       browser-tool: 1.0.5
-      deepmerge: 4.3.1
       eventemitter3: 5.0.1
       js-md5: 0.8.3
       recordrtc: 5.6.2
@@ -7035,6 +7050,10 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       p-locate: 5.0.0
+    dev: false
+
+  /lodash-es@4.17.22:
+    resolution: {integrity: sha512-XEawp1t0gxSi9x01glktRZ5HDy0HXqrM0x5pXQM98EaI0NxO6jVM7omDOxsuEo5UIASAnm2bRp1Jt/e0a2XU8Q==}
     dev: false
 
   /lodash.debounce@4.0.8:
@@ -9142,6 +9161,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
+  /screenfull@6.0.2:
+    resolution: {integrity: sha512-AQdy8s4WhNvUZ6P8F6PB21tSPIYKniic+Ogx0AacBMjKP1GUHN2E9URxQHtCusiwxudnCKkdy4GrHXPPJSkCCw==}
+    engines: {node: ^14.13.1 || >=16.0.0}
+    dev: false
+
   /select-hose@2.0.0:
     resolution: {integrity: sha512-mEugaLK+YfkijB4fx0e6kImuJdCIt2LxCRcbEYPqRGCs4F2ogyfZU5IAZRdjCP8JPq2AtdNoC/Dux63d9Kiryg==}
     dev: false
@@ -10007,6 +10031,10 @@ packages:
     resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
     engines: {node: '>=14.17'}
     hasBin: true
+    dev: false
+
+  /ua-parser-js@1.0.37:
+    resolution: {integrity: sha512-bhTyI94tZofjo+Dn8SN6Zv8nBDvyXTymAdM3LDI/0IboIUwTu1rEhW7v2TfiVsoYWgkQ4kOVqnI8APUFbIQIFQ==}
     dev: false
 
   /unbox-primitive@1.0.2:

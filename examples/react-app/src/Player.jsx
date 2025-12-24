@@ -1,5 +1,4 @@
 import "./Player.css";
-import "ezuikit-flv/style.css"; // 播放器样式
 import { useCallback, useEffect, useRef } from "react";
 import EzuikitFlv from "ezuikit-flv";
 
