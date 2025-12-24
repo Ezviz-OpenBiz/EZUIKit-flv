@@ -1,7 +1,7 @@
 /*
 *
-* decoder.js v1.0.3-beta.4
-* Copyright (c) 2025-10-29 Ezviz-OpenBiz
+* decoder.js v1.0.3-beta.6
+* Copyright (c) 2025-12-24 Ezviz-OpenBiz
 *
 * https://github.com/Ezviz-OpenBiz/EZUIKit-flv
 *
