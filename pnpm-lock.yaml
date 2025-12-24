@@ -1,0 +1,90 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  '@ezuikit/player-base':
+    specifier: 0.1.0-alpha.1
+    version: 0.1.0-alpha.1
+  '@ezuikit/utils-collect':
+    specifier: 0.1.0-beta.1
+    version: 0.1.0-beta.1
+  '@ezuikit/utils-logger':
+    specifier: 1.0.1
+    version: 1.0.1
+  browser-tool:
+    specifier: 1.0.5
+    version: 1.0.5
+  eventemitter3:
+    specifier: ^5.0.1
+    version: 5.0.1
+  js-md5:
+    specifier: 0.8.3
+    version: 0.8.3
+  recordrtc:
+    specifier: 5.6.2
+    version: 5.6.2
+  screenfull:
+    specifier: 5.1.0
+    version: 5.1.0
+
+packages:
+
+  /@ezuikit/player-base@0.1.0-alpha.1:
+    resolution: {integrity: sha512-68O3PtB5g7hm+HSpCqE/ef/Ud0xUPsFv3ckrj6VKm7wyed+9aqTazxv8mDPOXuNStZZULpfn+7Uf0KW7cHAyxg==}
+    dependencies:
+      '@ezuikit/utils-logger': 1.0.1
+      '@ezuikit/utils-tools': 1.1.0
+      eventemitter3: 5.0.1
+      lodash-es: 4.17.22
+      screenfull: 6.0.2
+      ua-parser-js: 1.0.37
+    dev: false
+
+  /@ezuikit/utils-collect@0.1.0-beta.1:
+    resolution: {integrity: sha512-+kkEkOVM9bQkWp90ppFpEwuaG8sRCH/F3CamLLgS0CG18gk1Fb5lcvS21hklgxMjS5tLotjwlfs0j+pQydzRYA==}
+    dev: false
+
+  /@ezuikit/utils-logger@1.0.1:
+    resolution: {integrity: sha512-qak0MXh4vWZCji3aSCfHdWR3EbZCaqS0iMT8/QWuWPRr0vDmTRMP3kFOAw1MuMraR0ocjPBE2PaTEmUuwVqaAw==}
+    dev: false
+
+  /@ezuikit/utils-tools@1.1.0:
+    resolution: {integrity: sha512-mujPtXIhZnuJrJySu1/Z6X90sMJQStZydurZcfetMCH6pqIYN4P+1w6+P8PCTR6k4LJp5nY9+eNnKa7AZ8OBKA==}
+    dev: false
+
+  /browser-tool@1.0.5:
+    resolution: {integrity: sha512-iuBYclNsu9LI5CeV7AEh9/PGyCUAsjs51oIlfAAg/BvOIeVx9uizgzIFA+COEyPJhgbciIHhQqpUL0ib1tGRVg==}
+    dev: false
+
+  /eventemitter3@5.0.1:
+    resolution: {integrity: sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==}
+    dev: false
+
+  /js-md5@0.8.3:
+    resolution: {integrity: sha512-qR0HB5uP6wCuRMrWPTrkMaev7MJZwJuuw4fnwAzRgP4J4/F8RwtodOKpGp4XpqsLBFzzgqIO42efFAyz2Et6KQ==}
+    dev: false
+
+  /lodash-es@4.17.22:
+    resolution: {integrity: sha512-XEawp1t0gxSi9x01glktRZ5HDy0HXqrM0x5pXQM98EaI0NxO6jVM7omDOxsuEo5UIASAnm2bRp1Jt/e0a2XU8Q==}
+    dev: false
+
+  /recordrtc@5.6.2:
+    resolution: {integrity: sha512-1QNKKNtl7+KcwD1lyOgP3ZlbiJ1d0HtXnypUy7yq49xEERxk31PHvE9RCciDrulPCY7WJ+oz0R9hpNxgsIurGQ==}
+    dev: false
+
+  /screenfull@5.1.0:
+    resolution: {integrity: sha512-dYaNuOdzr+kc6J6CFcBrzkLCfyGcMg+gWkJ8us93IQ7y1cevhQAugFsaCdMHb6lw8KV3xPzSxzH7zM1dQap9mA==}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
+  /screenfull@6.0.2:
+    resolution: {integrity: sha512-AQdy8s4WhNvUZ6P8F6PB21tSPIYKniic+Ogx0AacBMjKP1GUHN2E9URxQHtCusiwxudnCKkdy4GrHXPPJSkCCw==}
+    engines: {node: ^14.13.1 || >=16.0.0}
+    dev: false
+
+  /ua-parser-js@1.0.37:
+    resolution: {integrity: sha512-bhTyI94tZofjo+Dn8SN6Zv8nBDvyXTymAdM3LDI/0IboIUwTu1rEhW7v2TfiVsoYWgkQ4kOVqnI8APUFbIQIFQ==}
+    dev: false
