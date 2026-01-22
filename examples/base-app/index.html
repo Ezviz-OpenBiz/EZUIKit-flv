@@ -47,12 +47,14 @@
       <div class="container-shell">
         <div id="container"></div>
         <div class="input">
-          <input autocomplete="on" id="playUrl" value="https://rtmp05open.ys7.com:9188/v3/openlive/GG6358043_1_1.flv?expire=1763149791&id=909560789419950080&t=6ac3ea24ddb5997c6c91509d584f040d9e5184c44846ef814a88fdd9aac7667d&ev=101&supportH265=1" />
+          <input autocomplete="on" id="playUrl" value="https://rtmp05open.ys7.com:9188/v3/openlive/BC7799091_1_1.flv?expire=1769089970&id=934536106903339008&t=2bbdf238fb574aaf8430250f14e0c064024ccf4a41bcb93e60d3b3e69f8e5d12&ev=101&supportH265=1" />
           <button id="init">初始化</button>
         </div>
         <div style="display: inline-flex">
           <button id="play">播放</button>
           <button id="screenshot">截图</button>
+          <button id="startRecord">开始录制</button>
+          <button id="stopRecord">停止录制</button>
           <button id="pause">停止</button>
           <button id="destroy">销毁</button>
           <select id="setDebug">
@@ -95,6 +97,8 @@
       var $init = document.getElementById("init");
       var $play = document.getElementById("play");
       var $screenshot = document.getElementById("screenshot");
+      var $startRecord = document.getElementById("startRecord");
+      var $stopRecord = document.getElementById("stopRecord");
       var $pause = document.getElementById("pause");
       var $playHref = document.getElementById("playUrl");
       var $container = document.getElementById("container");
@@ -110,9 +114,11 @@
 
       function create() {
         player = new EzuikitFlv({
+          // https://ezviz-openbiz.github.io/EZUIKit-flv/global.html#FlvOptions
           container: $container,
           url: $playHref.value,
           debug: true,
+          downloadRecord: false, // 默认为 true, 录制完成后会自动下载， 设置为 false 后， 需要用户手动处理录制文件
           // autoPlay: true,
           // decoder: "decoder.js", // 自定义解码库加载地址， 默认放置在服务器根目录下
           // themeData: null // 忽略主题 @since 2.0.0
@@ -156,6 +162,21 @@
 
       $screenshot.addEventListener("click", function () {
         if (player) player.screenshot();
+      });
+
+      // 开始录制 
+      $startRecord.addEventListener("click", function () {
+        // https://ezviz-openbiz.github.io/EZUIKit-flv/EzuikitFlv.html#startRecord
+        if (player) player.startRecord(new Date().getTime()+'', (url, file) => {
+          // downloadRecord = true 时， 会自动下载， 回调通知使用者录制已停止， 并返回录制文件地址和文件对象
+          // downloadRecord = false 时，不会自动下载， 回调通知使用者录制已停止， 并返回录制文件地址和文件对象
+          console.log("record result: ",url, file);
+        });
+      });
+      // 停止录制
+      $stopRecord.addEventListener("click", function () {
+        // https://ezviz-openbiz.github.io/EZUIKit-flv/EzuikitFlv.html#stopRecord
+        if (player) player.stopRecord();
       });
 
       $destroy.addEventListener("click", function () {
