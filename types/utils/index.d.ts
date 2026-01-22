@@ -13,7 +13,6 @@ export function getStyle(element: any, key: any, numberType?: boolean): string |
 export function getNowTime(): number;
 export function calculationRate(callback: any): (size: any) => void;
 export function downloadRecord(blob: any, name: any, suffix: any): void;
-export function isMobile(): boolean;
 export function isAndroid(): boolean;
 export function isIOS(): boolean;
 export function parseTime(time: any, cFormat: any, ...args: any[]): any;

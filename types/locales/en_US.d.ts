@@ -112,5 +112,6 @@ declare const _default: {
     9060: string;
     9061: string;
     9062: string;
+    httpFetchStreamError: string;
 };
 export default _default;

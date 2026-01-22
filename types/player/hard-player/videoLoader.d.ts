@@ -24,7 +24,6 @@ export default class VideoLoader extends CommonLoader<HTMLVideoElement> {
     _poster(): void;
     render(msg: any): void;
     resize(): void;
-    _resizeElement($Element: HTMLVideoElement | HTMLImageElement): void;
     isPlaying(): boolean;
     get currentTime(): number;
     _enableSoundOnUserInteraction(): void;

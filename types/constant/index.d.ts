@@ -37,6 +37,7 @@ export declare const DEFAULT_PLAYER_OPTIONS: {
     protocol: number;
     demuxType: string;
     useMSE: boolean;
+    autoWasm: boolean;
     wasmDecodeErrorReplay: boolean;
     openWebglAlignment: boolean;
     wasmDecodeAudioSyncVideo: boolean;
@@ -44,6 +45,9 @@ export declare const DEFAULT_PLAYER_OPTIONS: {
     loggerOptions: {
         level: string;
     };
+    mutedShowAutoReload: boolean;
+    /** 录制结果是否直接下载 */
+    downloadRecord: boolean;
 };
 export declare const WORKER_CMD_TYPE: {
     init: string;
@@ -132,46 +136,10 @@ export declare const EVENTS: {
     playbackRateChange: string;
     decoderLoaded: string;
     end: string;
-} & {
-    loading: string;
-    play: string;
-    capturePicture: string;
-    volumechange: string;
-    audioInfo: string;
-    videoInfo: string;
-    fullscreen: string;
-    exitFullscreen: string;
-    fullscreenChange: string;
-    resize: string;
-    orientationChange: string;
-    audioCodecUnsupported: string;
-    changeTheme: string;
-    changeRecType: string;
-    changeDefinition: string;
-    changeSpeed: string;
-    control: {
-        play: string;
-        capturePicture: string;
-        volumechange: string;
-        volumePanelOpenChange: string;
-        controlsBarOpenChange: string;
-        headerMoreShow: string;
-        footerMoreShow: string;
-        beforeMountControls: string;
-        mountedControls: string;
-        beforeUnmountControls: string;
-        unmountedControls: string;
-        changeRecType: string;
-        changeDefinition: string;
-        definitionPanelOpenChange: string;
-        changeSpeed: string;
-        speedPanelOpenChange: string;
-    };
-    theme: {
-        beforeDestroy: string;
-        destroyed: string;
-    };
-    message: string;
+    recordInputData: string;
+    startRecord: string;
+    stopRecord: string;
+    flvStream: string;
 };
 export declare const FLV_EVENTS: {
     load: string;
@@ -191,6 +159,7 @@ export declare const FLV_EVENTS: {
     volumechange: string;
     performance: string;
     playToRenderTimes: string;
+    flvStream: string;
 };
 export declare const EVENTS_ERROR: {
     playError: string;
@@ -243,11 +212,6 @@ export declare const H265_NAL_TYPE: {
     pps: number;
 };
 export declare const CONTROL_HEIGHT = 38;
-export declare const SCALE_MODE_TYPE: {
-    full: number;
-    auto: number;
-    fullAuto: number;
-};
 export declare const CANVAS_RENDER_TYPE: {
     webcodecs: string;
     webgl: string;

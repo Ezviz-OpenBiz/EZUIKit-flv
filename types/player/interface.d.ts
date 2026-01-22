@@ -1,5 +1,5 @@
 import Debug from '../utils/debug';
-import { type IThemeData } from '@ezviz/player-theme';
+import { type IThemeData } from '@ezuikit/player-theme';
 export type TFlvOptions = {
     container: string | HTMLElement;
     videoBuffer: number;
@@ -29,6 +29,22 @@ export type TFlvOptions = {
      *
      */
     themeData?: IThemeData;
+    /** 跨域请求头 */
+    referrerPolicy?: string;
+    /**
+     * 是否是ezviz设备
+     */
+    isEzviz?: boolean;
+    /**
+     * 静音播放窗口隐藏后再展示自动重新加载流(仅直播流), 默认 true
+     * @2.1.0
+     */
+    mutedShowAutoReload?: boolean;
+    /**
+     * 录制结果是否直接下载， 默认 true
+     * @2.1.0
+     */
+    downloadRecord?: boolean;
 };
 export type RequiredFlvOptions = Required<TFlvOptions> & {
     url: string;

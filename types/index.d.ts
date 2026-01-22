@@ -91,52 +91,10 @@ declare class EzuikitFlv extends Theme {
         playbackRateChange: string;
         decoderLoaded: string;
         end: string;
-    } & {
-        loading: string;
-        play: string;
-        capturePicture: string;
-        volumechange: string;
-        audioInfo: string;
-        videoInfo: string;
-        fullscreen: string;
-        exitFullscreen: string;
-        fullscreenChange: string;
-        resize: string;
-        orientationChange: string;
-        audioCodecUnsupported: string;
-        changeTheme: string;
-        changeRecType: string;
-        changeDefinition: string;
-        changeSpeed: string;
-        control: {
-            play: string; /**
-             * @description 初始化播放
-             * @private
-             * @param {string | HTMLElement} $container
-             * @param {FlvOptions} options
-             * @return {void}
-             */
-            capturePicture: string;
-            volumechange: string;
-            volumePanelOpenChange: string;
-            controlsBarOpenChange: string;
-            headerMoreShow: string;
-            footerMoreShow: string;
-            beforeMountControls: string;
-            mountedControls: string;
-            beforeUnmountControls: string;
-            unmountedControls: string;
-            changeRecType: string;
-            changeDefinition: string;
-            definitionPanelOpenChange: string;
-            changeSpeed: string;
-            speedPanelOpenChange: string;
-        };
-        theme: {
-            beforeDestroy: string;
-            destroyed: string;
-        };
-        message: string;
+        recordInputData: string;
+        startRecord: string;
+        stopRecord: string;
+        flvStream: string;
     };
     static QUALITY_ENUM: {
         0: string;
@@ -147,8 +105,6 @@ declare class EzuikitFlv extends Theme {
         5: string;
         6: string;
     };
-    /** 旋转角度 */
-    static ROTATE: number[];
     /** */
     static TIMEOUT: {
         delayTimeout: string;
@@ -186,17 +142,28 @@ declare class EzuikitFlv extends Theme {
      */
     constructor(options: FlvOptions);
     urlInfo: {};
+    /**
+     * 录制工具
+     * @type {Record}
+     */
+    _record: Record;
     /** @type {Services} */
     services: Services;
+    destoryed: boolean;
     /** @private */
     private _loadingTimeoutDelayTimer;
-    _heartTimeoutDelayTimer: any;
+    /** @private */
+    private _heartTimeoutDelayTimer;
+    /** @private */
+    private _flvRecordFlag;
+    _flvParseChunk: FlvParseChunk;
     _opt: any;
     $container: any;
     _heartTimeoutDelayTimes: number;
     _loadingTimeoutReplayTimes: number;
     events: Events;
     _videoInfo: {};
+    _audioInfo: {};
     _currentPlayDate: string;
     definitionList: any[];
     definition: {};
@@ -206,7 +173,12 @@ declare class EzuikitFlv extends Theme {
     private _playbackRate;
     playbackRateList: number[];
     playbackRecords: any[];
-    _onvisibilitychange(): void;
+    /**
+     * 处理页面切换， 兼容页面中播放静音的视频隐藏（如果没有音频暂时不考虑）播放会暂停和不能被重新唤起， 需要当前页面展示才可以重新唤起
+     * 浏览器（尤其是 Safari 或移动端浏览器）为了节省电量，自动暂停了纯视频（无音频轨道）的后台播放
+     * @private
+     */
+    private _onvisibilitychange;
     /**
      * https 接口调用 仅针对萤石设备
      * @since @1.0.3
@@ -265,12 +237,29 @@ declare class EzuikitFlv extends Theme {
      * @returns {boolean}
      */
     private _isEzvizPlayback;
+    /**
+     * 开始录制  仅支持(视频(AVC/HEVC) + 音频 AAC(采样率16k)))
+     * @param {string=} name 录制文件名， 默认为当前时间戳
+     * @param {Function=} stopCallBack 录制结束的回调 (url: string, file: Blob) => void
+     * @returns {Promise<string>}
+     */
+    startRecord(name?: string | undefined, stopCallBack?: Function | undefined): Promise<string>;
+    /**
+     * 停止录制
+     * @returns {Promise<string>}
+     */
+    stopRecord(): Promise<string>;
     player: Player;
     /**
      * @private
      * @param {obejct} videoInfo
      */
     private _handlevideoInfo;
+    /**
+     * @private
+     * @param {obejct} videoInfo
+     */
+    private _handleAudioInfo;
     /**
      * @description 初始化播放
      * @private
@@ -322,7 +311,7 @@ declare class EzuikitFlv extends Theme {
      */
     openSound(): void;
     /**
-     * @description 设置音量
+     * @description 设置音量 (设置音量前需要 把 muted 设置为 false)
      * @param {number} value 音量 0～1
      * @returns {void}
      * @deprecated 后面版本会移除, 推荐 player.volume = 0.8,
@@ -346,15 +335,6 @@ declare class EzuikitFlv extends Theme {
      */
     audioResume(): void;
     /**
-     * @description 设置渲染的模式 (video 不支持)
-     * @private
-     * @param {0 | 1 | 2} type 0: 完全填充canvas区域; 1: 等比缩放, 最大边填充 ; 2: 等比缩放后,最小边填充，完全填充canvas区域,画面不被拉伸,没有黑边,但画面显示不全
-     * @returns {Promise}
-     * @example
-     * flv.setScaleMode(1)
-     */
-    private setScaleMode;
-    /**
      * @description 暂停
      * @returns {Promise<unknown>}
      * @example
@@ -362,6 +342,10 @@ declare class EzuikitFlv extends Theme {
      */
     pause(): Promise<unknown>;
     _delayTimeoutTimer: any;
+    /**
+     * @private
+     */
+    private _playerPuase;
     /**
      * @description 清理画布为黑色背景
      * @private
@@ -424,15 +408,6 @@ declare class EzuikitFlv extends Theme {
      */
     private setBufferTime;
     /**
-     * @description 设置旋转角度，支持，0(默认), 90, 180, 270 四个值。
-     * @param {number} deg 旋转角度取值 EzuikitFlv.ROTATE
-     * @returns {Promise}
-     * @deprecated 不在使用
-     * @example
-     * flv.setRotate(90) // 旋转90度
-     */
-    setRotate(deg: number): Promise<any>;
-    /**
      * @description 返回是否加载完毕
      * @private
      * @returns {boolean}
@@ -492,8 +467,15 @@ declare class EzuikitFlv extends Theme {
      * player.getVersion()
      */
     getVersion(): string;
+    /**
+     * 海康 flv 流头
+     * @private
+     */
+    private get _HKHead();
 }
-import Theme from '@ezviz/player-theme';
+import { Theme } from '@ezuikit/player-theme';
+import { Record } from '@ezuikit/player-plugin-record';
 import Services from './services';
+import FlvParseChunk from './recorder/FlvParseChunk';
 import Events from './utils/events';
 import Player from './player';

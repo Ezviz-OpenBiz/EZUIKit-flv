@@ -20,15 +20,17 @@
  * @property {number=} loadingTimeoutReplayTimes  重试次数。默认 5,  -1 不限次数
  * @property {boolean=} keepScreenOn 开启屏幕常亮，在手机浏览器上, canvas标签渲染视频并不会像video标签那样保持屏幕常。默认 false
  * @property {boolean=} muted 是否静音，默认是关闭声音播放的。默认 true
- * @property {boolean=} useMSE 是否开启MediaSource硬解码。视频编码只支持H.264视频（Safari on iOS不支持）。默认 false
- * @property {boolean=} autoWasm 在使用MSE或者Webcodecs 播放H265的时候，是否自动降级到wasm模式。默认 true
+ * @property {boolean=} useMSE 是否开启MediaSource硬解码。视频编码只支持H.264视频（Safari on iOS不支持）。默认 false (@1.x - 2.0.x)  默认 true (@2.1.0)
+ * @property {boolean=} autoWasm 在使用MSE播放H265的时候，是否自动降级到wasm模式。默认 true
  * @property {boolean=} isLive 是否是直播。默认 true  @1.0.3
  * @property {boolean=} isEzviz 是否是萤石开放平台设备，  @1.0.3
  * @property {string=} accessToken 开放平台 accessToken， @1.0.3
  * @property {Object=} env  环境变量， @1.0.3
  * @property {string=} env.domain 开放平台 api domain, @1.0.3
  * @property {string=} timeZone  时区 默认 0， @1.0.3
- * @property {object=} themeData  控件配置项 @2.0.0， 仅支持 play sound webExpend expend， 当设置为 null  不展示控件 {@link https://github.com/Ezviz-OpenBiz/EZUIKit-JavaScript-npm/blob/master/themeData.md}
+ * @property {object=} themeData  控件配置项 @2.0.0， 仅支持 play sound record(@version 2.1.0) webExpend expend， 当设置为 null  不展示控件 {@link https://github.com/Ezviz-OpenBiz/EZUIKit-JavaScript-npm/blob/master/themeData.md}
+ * @property {boolean=} mutedShowAutoReload  静音播放窗口隐藏后再展示自动重新加载流, 默认 true  @2.1.0
+ * @property {boolean=} downloadRecord  录制结果是否直接下载， 默认 true @2.1.0
  */
 /**
  *
