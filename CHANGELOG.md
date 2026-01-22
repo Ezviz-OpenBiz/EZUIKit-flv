@@ -4,7 +4,7 @@
 
 - 升级主题，支持双击全屏等
 
-- 支持码流本地录制成 MP4 (音频仅支持 AAC)， `startRecord` 开始录制， `stopRecord` 停止录制
+- 支持码流本地录制成 MP4 (音频仅支持 AAC)， `startRecord` 开始录制， `stopRecord` 停止录制 （录制的是接收到的原始码流）
 
 - api `setScaleMode` 改成同步操作
 
