@@ -9,7 +9,7 @@
     "preinstall": "npx only-allow yarn"
   },
   "dependencies": {
-    "ezuikit-flv": "2.0.3",
+    "ezuikit-flv": "2.1.0",
     "vue": "^2.5.17"
   },
   "devDependencies": {
