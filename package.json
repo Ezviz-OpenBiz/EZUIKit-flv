@@ -15,6 +15,10 @@
     "style.css"
   ],
   "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ezviz-OpenBiz/EZUIKit-flv.git"
+  },
   "bugs": {
     "url": "https://github.com/Ezviz-OpenBiz/EZUIKit-flv/issues"
   },
