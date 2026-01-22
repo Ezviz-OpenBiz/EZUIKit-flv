@@ -1,3 +1,17 @@
+## v2.1.0 (2026-01-22)
+
+### Feat
+
+- 升级主题，支持双击全屏等
+
+- 支持码流本地录制成 MP4 (音频仅支持 AAC)， `startRecord` 开始录制， `stopRecord` 停止录制
+
+- api `setScaleMode` 改成同步操作
+
+- 移除 `setRotate` api
+
+- 新增 `mutedShowAutoReload` 静音播放窗口隐藏后再展示自动重新加载流, 默认为 `true`
+
 ## v2.0.3 （2025-11-14）
 
 ### Feat
