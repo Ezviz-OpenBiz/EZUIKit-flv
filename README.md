@@ -33,6 +33,7 @@ const player = new EzuikitFlv({
   id: "id", // support element id
   decoder: "decoder.js", // 自定义解码库加载地址， 默认放置在服务器根目录下
   autoPlay: true,
+  // downloadRecord: true, // 默认为 true, 录制完成后会自动下载， 设置为 false 后， 需要用户手动处理录制文件
   // themeData: null // 忽略主题
 });
 
@@ -53,6 +54,7 @@ const player = new EzuikitFlv({
       id: "container-id", // support element id or element
       decoder: "decoder.js", // 自定义解码库加载地址， 默认放置在服务器根目录下
       autoPlay: true,
+      // downloadRecord: true, // 默认为 true, 录制完成后会自动下载， 设置为 false 后， 需要用户手动处理录制文件
       // themeData: null // 忽略主题
     });
 
