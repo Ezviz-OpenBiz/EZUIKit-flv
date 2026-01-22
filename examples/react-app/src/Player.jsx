@@ -41,7 +41,7 @@ function Player() {
         container: containerRef.current,
         // debug: true,
         // flv 播放地址， https://open.ys7.com/console/device.html
-        url: "https://rtmp05open.ys7.com:9188/v3/openlive/BC7799091_1_1.flv?expire=1763681273&id=911699389814775808&t=f21770fc99afbc0e5571f31c6a9b7ed638abee710b5dc6c61a6b20ab1bc507ab&ev=101&supportH265=1",
+        url: url, // "https://rtmp05open.ys7.com:9188/v3/openlive/BC7799091_1_1.flv?expire=1769089970&id=934536106903339008&t=2bbdf238fb574aaf8430250f14e0c064024ccf4a41bcb93e60d3b3e69f8e5d12&ev=101&supportH265=1",
         useMSE: true, // 硬解
         autoPlay: true, // 默认自动播放
         // decoder: "decoder.js", // 软解解码资源 （wasm 要和js 在同一个文件夹中）
@@ -123,7 +123,7 @@ function Player() {
             style={{ width: 600 }}
             placeholder="输入播放地址"
             ref={urlRef}
-            defaultValue="https://rtmp05open.ys7.com:9188/v3/openlive/BC7799091_1_1.flv?expire=1763680865&id=911697680651005952&t=d3cda94b473e1bcb19ba5f68a21efe1f9a92ab1de7e98f2ca285cc1088fcb816&ev=101&supportH265=1"
+            defaultValue="https://rtmp05open.ys7.com:9188/v3/openlive/BC7799091_1_1.flv?expire=1769089970&id=934536106903339008&t=2bbdf238fb574aaf8430250f14e0c064024ccf4a41bcb93e60d3b3e69f8e5d12&ev=101&supportH265=1"
           />
         </div>
         <div>
