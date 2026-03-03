@@ -72,15 +72,6 @@
             />
           </div>
           <div>
-            <label>旋转</label>
-            <select id="setRotate" title="只支持 0 | 90 | 180 | 270">
-              <option value="0">0度</option>
-              <option value="90">90度</option>
-              <option value="180">180度</option>
-              <option value="270">270度</option>
-            </select>
-          </div>
-          <div>
             <label>填充模式</label>
             <select id="setScaleMode" title="填充模式">
               <option value="0">完全填充区域（拉伸）</option>
@@ -107,7 +98,6 @@
 
       var $setDebug = document.getElementById("setDebug");
       var $setVolume = document.getElementById("setVolume");
-      var $setRotate = document.getElementById("setRotate");
       var $setScaleMode = document.getElementById("setScaleMode");
 
       var player = null;
@@ -198,11 +188,6 @@
         }
       });
 
-      $setRotate.addEventListener("change", (e) => {
-        if (player) {
-          player.setRotate(e.target.value);
-        }
-      });
       $setScaleMode.addEventListener("change", (e) => {
         if (player) {
           player.setScaleMode(e.target.value);
