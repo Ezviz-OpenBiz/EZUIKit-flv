@@ -196,7 +196,7 @@
       $setVolume.addEventListener("blur", (e) => {
         if (player) {
           const value = +e.target.value;
-          player.muted = value <= 0;
+          player.muted = false;
           player.volume = +e.target.value;
         }
       });

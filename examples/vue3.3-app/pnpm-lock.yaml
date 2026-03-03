@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   ezuikit-flv:
-    specifier: ^2.1.1-beta.1
-    version: 2.1.1-beta.1
+    specifier: ^2.1.1
+    version: 2.1.1
   vue:
     specifier: ^3.3.4
     version: 3.4.35
@@ -751,8 +751,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /ezuikit-flv@2.1.1-beta.1:
-    resolution: {integrity: sha512-quYDmGubnvdFu+GQopekJ2pA6JJcrbzHa9O7zvgNikEsjLpOBMdkfUsujAhvAnE+cDjY+SyElMDtUCBglzD9bQ==}
+  /ezuikit-flv@2.1.1:
+    resolution: {integrity: sha512-yQf3iUjxJIo9YLhGODnBvy77eDy8uDELOH6R/82ZZPHXzT0wCsTfQEhqpqKxBgS25QT34cPL/A9IjvymMyMaQw==}
     dev: false
 
   /fast-deep-equal@3.1.3:
