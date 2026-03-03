@@ -26,6 +26,7 @@ function Player() {
         }
 
         value = parseInt((value * 100 + "").split(".")[0]) / 100; // 不使用 toFixed 是为了避免四舍五入问题
+        playerRef.current.muted = false;
         playerRef.current.volume = value;
       } else {
         console.log("player 未初始化");

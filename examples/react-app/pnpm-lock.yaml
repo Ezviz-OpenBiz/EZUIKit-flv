@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   ezuikit-flv:
-    specifier: ^2.1.0
-    version: 2.1.0
+    specifier: ^2.1.1
+    version: 2.1.1
   react:
     specifier: ^18.2.0
     version: 18.3.1
@@ -5118,8 +5118,8 @@ packages:
       - supports-color
     dev: false
 
-  /ezuikit-flv@2.1.0:
-    resolution: {integrity: sha512-BNFzbkXxmjRyHZfBgG7V9wS1eRKTpp39U9Xd4gS3vZLPEmeFrpPxd++kweZTLbb2Qa5NMb97Eaj/8SWduaSn9Q==}
+  /ezuikit-flv@2.1.1:
+    resolution: {integrity: sha512-yQf3iUjxJIo9YLhGODnBvy77eDy8uDELOH6R/82ZZPHXzT0wCsTfQEhqpqKxBgS25QT34cPL/A9IjvymMyMaQw==}
     dev: false
 
   /fast-deep-equal@3.1.3:

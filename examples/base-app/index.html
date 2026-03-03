@@ -72,15 +72,6 @@
             />
           </div>
           <div>
-            <label>旋转</label>
-            <select id="setRotate" title="只支持 0 | 90 | 180 | 270">
-              <option value="0">0度</option>
-              <option value="90">90度</option>
-              <option value="180">180度</option>
-              <option value="270">270度</option>
-            </select>
-          </div>
-          <div>
             <label>填充模式</label>
             <select id="setScaleMode" title="填充模式">
               <option value="0">完全填充区域（拉伸）</option>
@@ -107,7 +98,6 @@
 
       var $setDebug = document.getElementById("setDebug");
       var $setVolume = document.getElementById("setVolume");
-      var $setRotate = document.getElementById("setRotate");
       var $setScaleMode = document.getElementById("setScaleMode");
 
       var player = null;
@@ -118,7 +108,7 @@
           container: $container,
           url: $playHref.value,
           debug: true,
-          downloadRecord: false, // 默认为 true, 录制完成后会自动下载， 设置为 false 后， 需要用户手动处理录制文件
+          downloadRecord: true, // 默认为 true, 录制完成后会自动下载， 设置为 false 后， 需要用户手动处理录制文件
           // autoPlay: true,
           // decoder: "decoder.js", // 自定义解码库加载地址， 默认放置在服务器根目录下
           // themeData: null // 忽略主题 @since 2.0.0
@@ -198,11 +188,6 @@
         }
       });
 
-      $setRotate.addEventListener("change", (e) => {
-        if (player) {
-          player.setRotate(e.target.value);
-        }
-      });
       $setScaleMode.addEventListener("change", (e) => {
         if (player) {
           player.setScaleMode(e.target.value);
@@ -211,7 +196,7 @@
       $setVolume.addEventListener("blur", (e) => {
         if (player) {
           const value = +e.target.value;
-          player.muted = value <= 0;
+          player.muted = false;
           player.volume = +e.target.value;
         }
       });
