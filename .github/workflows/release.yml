@@ -7,7 +7,7 @@ on:
       - "v*"
 
 permissions:
-  id-token: write  # Required for OIDC
+  id-token: write # Required for OIDC
   contents: read
 
 # 任务，定义个changelog 的任务
@@ -26,19 +26,19 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           registry-url: https://registry.npmjs.org
 
-      - run: npm install -g npm@latest
       # 安装依赖
       - uses: pnpm/action-setup@v4
         with:
           version: 8
 
       - name: Install dependencies
-        run: pnpm install
+        run:
+          pnpm install
 
-            # 获取 tag 的版本类型（仅支持 正式版和beta版）
+          # 获取 tag 的版本类型（仅支持 正式版和beta版）
       - name: Determine release tag
         id: determine_tag
         run: |
