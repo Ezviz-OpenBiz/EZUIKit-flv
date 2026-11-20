@@ -20,6 +20,7 @@ export type TFlvOptions = {
     width: number;
     height: number;
     isLive: boolean;
+    isEzviz?: boolean;
     referrerPolicy?: string;
 };
 export type RequiredFlvOptions = Required<TFlvOptions> & {

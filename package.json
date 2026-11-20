@@ -1,6 +1,6 @@
 {
   "name": "ezuikit-flv",
-  "version": "1.0.3-beta.6",
+  "version": "1.0.3-beta.7",
   "main": "./index.js",
   "types": "./types",
   "author": "Ezviz-OpenBiz",
