@@ -26,10 +26,9 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           registry-url: https://registry.npmjs.org
 
-      - run: npm install -g npm@latest
       # 安装依赖
       - uses: pnpm/action-setup@v4
         with:
