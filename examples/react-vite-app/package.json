@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "ezuikit-flv": "2.1.3-beta.1",
+    "ezuikit-flv": "2.1.3-beta.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

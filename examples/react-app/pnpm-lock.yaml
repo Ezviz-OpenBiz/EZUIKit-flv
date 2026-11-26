@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       ezuikit-flv:
-        specifier: 2.1.3-beta.1
-        version: 2.1.3-beta.1
+        specifier: 2.1.3-beta.3
+        version: 2.1.3-beta.3
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -2498,8 +2498,8 @@ packages:
     resolution: {integrity: sha512-Bdcs4+3qlpVlx2NRn6fgX2Ue2/gGRaPeawebgclM0ERSCqDpA+owF1fdPwjJUTAJWMTuAaxjDf+hzb0/4eKvvw==}
     engines: {node: '>= 0.10.0'}
 
-  ezuikit-flv@2.1.3-beta.1:
-    resolution: {integrity: sha512-fhqF8zVEC7LGDYo6eVkWghgUi09kQWI7cSpxk6K2NpDppm16hZxFELaZz8JXzQCfFUBImO6Iy8tzaQodzNLp1A==}
+  ezuikit-flv@2.1.3-beta.3:
+    resolution: {integrity: sha512-jTDLajsVHgsx7E+8mh/cDgfRB1yeRO8OawNwkuxO71J26tmtS92l8SnD74CPFLeAPo2zNc4ilhw66ir+P9oLNQ==}
 
   fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
@@ -8540,7 +8540,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ezuikit-flv@2.1.3-beta.1: {}
+  ezuikit-flv@2.1.3-beta.3: {}
 
   fast-deep-equal@3.1.3: {}
 
