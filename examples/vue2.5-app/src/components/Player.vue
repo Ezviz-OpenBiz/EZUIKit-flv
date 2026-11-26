@@ -56,9 +56,7 @@ export default {
       scaleMode: '1'
     }
   },
-  mounted() {
-    this.create()
-  },
+  mounted() {},
   methods: {
     create() {
       const container = document.getElementById('container')

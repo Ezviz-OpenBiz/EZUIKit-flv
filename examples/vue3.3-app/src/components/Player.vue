@@ -104,9 +104,7 @@ const handleVolumeChange = (e) => {
   }
 }
 
-onMounted(() => {
-  create()
-})
+onMounted(() => {})
 </script>
 
 <template>
