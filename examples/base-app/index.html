@@ -103,6 +103,12 @@
       var player = null;
 
       function create() {
+
+        if (player) {
+          player.destroy()
+          player = null
+        }
+
         player = new EzuikitFlv({
           // https://ezviz-openbiz.github.io/EZUIKit-flv/global.html#FlvOptions
           container: $container,
